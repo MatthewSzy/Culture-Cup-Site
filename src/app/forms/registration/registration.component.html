@@ -1,0 +1,51 @@
+<div class="main_box">
+    <div class="color_box">
+        <div class="center_box">
+            <div class="form_box">
+                <p>ZAŁÓŻ NOWE KONTO</p>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="form_group">
+                        <mat-form-field appearance="fill" class="mat_form">
+                            <mat-label>Nazwa użytkownika</mat-label>
+                            <input matInput formControlName="userName" autocomplete="off">
+                            <mat-error *ngIf="f.email.invalid">Proszę wpisać e-mail</mat-error>
+                         </mat-form-field>
+                    </div>
+                    <div class="form_group">
+                        <mat-form-field appearance="fill" class="mat_form">
+                            <mat-label>E-mail</mat-label>
+                            <input matInput formControlName="email" autocomplete="off">
+                            <mat-error *ngIf="f.email.invalid">Proszę wpisać e-mail</mat-error>
+                         </mat-form-field>
+                    </div>
+                    <div class="form_group">
+                        <mat-form-field appearance="fill" class="mat_form">
+                            <mat-label>Hasło</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="off">
+                            <button class="hide_button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="f.password.invalid">Proszę wpisać hasło</mat-error>
+                        </mat-form-field>
+                    </div>  
+                    <div class="form_group">
+                        <mat-form-field appearance="fill" class="mat_form">
+                            <mat-label>Powtórz Hasło</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="repeatPassword" autocomplete="off">
+                            <button class="hide_button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="f.password.invalid">Proszę powtórzyć hasło</mat-error>
+                        </mat-form-field>
+                    </div>   
+                    <button [disabled]="loading" class="register-button">
+                        Załóż konto
+                    </button>
+                    <button routerLink="../login" class="login-button">
+                        Zaloguj się
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
