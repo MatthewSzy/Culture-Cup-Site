@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  imagesSetOne: string[] = [
+    "assets/images/joker.jpg",
+    "assets/images/doctorstrange.jpg"
+  ];
+
+  imagesSetTwo: string[] = [
+    "assets/images/godofwar.jpg",
+    "assets/images/starwars.jpg"
+  ];
+
+  constructor() {}
 
   ngOnInit(): void {
-  }
 
+  }
 }

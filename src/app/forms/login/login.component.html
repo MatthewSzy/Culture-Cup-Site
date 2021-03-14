@@ -1,0 +1,34 @@
+<div class="main_box">
+    <div class="color_box">
+        <div class="center_box">
+            <div class="form_box">
+                <p>ZALOGUJ SIĘ NA KONTO</p>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="form_group">
+                        <mat-form-field appearance="fill" class="mat_form">
+                            <mat-label>E-mail lub nazwa użytkownika</mat-label>
+                            <input matInput formControlName="emailOrUserName" autocomplete="off">
+                            <mat-error *ngIf="f.emailOrUserName.invalid">Proszę wpisać e-mail</mat-error>
+                         </mat-form-field>
+                    </div>
+                    <div class="form_group">
+                        <mat-form-field appearance="fill" class="mat_form">
+                            <mat-label>Hasło</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="off">
+                            <button class="hide_button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="f.password.invalid">Proszę wpisać hasło</mat-error>
+                        </mat-form-field>
+                    </div>    
+                    <button [disabled]="loading" class="login-button">
+                        Zaloguj się
+                    </button>
+                    <button routerLink="../registration" class="register-button">
+                        Załóż nowe konto
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

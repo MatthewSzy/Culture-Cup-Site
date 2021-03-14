@@ -1,0 +1,79 @@
+   @keyframes cf4FadeInOut {
+    0% {
+        opacity:1;
+    }
+    10% {
+        opacity:1;
+    }
+    20% {
+        opacity:0;
+    }
+    90% {
+        opacity:0;
+    }
+    100% {
+        opacity:1;
+    }
+}
+
+.images_box {
+    margin: 0 auto;
+}
+  
+.images_box img  {
+    position: fixed;
+    z-index: -1!important;
+    max-width: 100%;
+    clip: rect(100px, 4000px, 900px, 0px);
+    left: 0;
+    margin-top: -200px;
+}
+
+.images_box img {
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+   
+    animation-name: cf4FadeInOut;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 60s;
+}
+  
+.images_box img:nth-of-type(1) {
+    animation-delay: 50s;
+}
+
+.images_box img:nth-of-type(2) {
+    animation-delay: 40s;
+}
+
+.images_box img:nth-of-type(3) {
+    animation-delay: 30s;
+}
+
+.images_box img:nth-of-type(4) {
+    clip: rect(200px, 4000px, 1000px, 0px);
+    margin-top: -300px;
+    animation-delay: 20s;
+}
+
+.images_box img:nth-of-type(5) {
+    animation-delay: 10s;
+}
+
+.images_box img:nth-of-type(6) {
+    clip: rect(300px, 4000px, 1100px, 0px);
+    margin-top: -400px;
+    animation-delay: 0;
+}
+
+.grey-background {
+    position: absolute;
+    z-index: -1!important;
+    width: 100%;
+    height: 800px;
+    margin-top: -100px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
