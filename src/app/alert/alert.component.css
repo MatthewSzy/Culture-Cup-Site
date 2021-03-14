@@ -1,0 +1,50 @@
+.alert-danger {
+    color: black;
+    background-color: rgba(204, 0, 0, 0.7);
+    border-color: rgba(153, 0, 0, 0.7);
+    font-size: 20px;
+    margin-left: 690px;
+    top: -22px;
+    position: absolute;
+}
+
+.alert-success {
+    color: black;
+    background-color: rgba(71, 209, 71, 0.7);
+    border-color: rgba(36, 143, 36, 0.7);
+    font-size: 20px;
+    margin-left: 690px;
+    top: -22px;
+    position: absolute;
+}
+
+.alert-info {
+    color: black;
+    background-color: rgba(51, 153, 255, 0.7);
+    border-color: rgba(0, 102, 204, 0.7);
+    font-size: 20px;
+    margin-left: 690px;
+    top: -22px;
+    position: absolute;
+}
+
+.alert-warning {
+    color: black;
+    background-color: rgba(230, 230, 0, 0.7);
+    border-color: rgba(153, 153, 0, 0.7);
+    font-size: 20px;
+    margin-left: 690px;
+    top: -22px;
+    position: absolute;
+}
+
+.close {
+    color: rgb(102, 102, 102);
+    margin-top: 4px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}

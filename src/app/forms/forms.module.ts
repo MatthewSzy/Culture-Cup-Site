@@ -9,8 +9,7 @@ import { LayoutComponent } from './layout.component';
 import { FormsRoutingModule } from './forms-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { AlertComponent } from './alert/alert.component';
-import { AccountComponent } from './account/account.component';
+import { AlertComponent } from '../alert/alert.component';
 
 const modules = [
     MatFormFieldModule,
@@ -33,7 +32,6 @@ const modules = [
         LoginComponent,
         RegistrationComponent,
         AlertComponent,
-        AccountComponent
     ]
 })
 export class FormsModule { }
