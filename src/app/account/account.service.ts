@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { User, UserRegister } from 'src/app/account/user';
+import { User, UserLogin, UserRegister } from 'src/app/account/user';
 import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
@@ -25,8 +25,8 @@ export class AccountService {
         return this.userSubject.value;
     }
 
-    login(email: string, password: string) {
-        return this.http.post<User>(`${environment.apiUrl}/users/login`, { email, password })
+    login(user: UserLogin) {
+        return this.http.post<User>(`${environment.apiUrl}/users/login`, user)
             .pipe(map(user => {
                 localStorage.setItem('user', JSON.stringify(user));
                 this.userSubject.next(user);

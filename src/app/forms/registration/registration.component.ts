@@ -46,15 +46,16 @@ export class RegistrationComponent implements OnInit {
 
     this.loading = true;
     this.accountService.registration(user)
-        .pipe(first())
+      .pipe(first())
         .subscribe({
           next: () => {
             this.router.navigate(['../login'], { relativeTo: this.route})
           },
           error: error => {
+            console.log(error.error.message)
             this.loading = false;
             this.submitted = false;
           }
-        })
+        });
   }
 }
