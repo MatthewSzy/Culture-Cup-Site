@@ -33,4 +33,8 @@ export class AccountService {
                 return user;
             }));
     }
+
+    registration(user: UserRegister) {
+        return this.http.post(`${environment.apiUrl}/users/registration`, user);
+    }
 }
