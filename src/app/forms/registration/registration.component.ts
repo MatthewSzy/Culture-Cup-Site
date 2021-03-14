@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { AccountService } from 'src/app/account/account.service';
+import { UserRegister } from 'src/app/account/user';
 
 @Component({
   selector: 'app-registration',
@@ -15,22 +19,42 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private accountService: AccountService
   ) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      userName: [''],
-      email: [''],
-      password: [''],
-      repeatPassword: ['']
+      userName: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      repeatPassword: ['', Validators.required]
     });
   }
 
   get f() { return this.form.controls; }
 
   onSubmit() {
-    console.log(this.f.email.value)
-    console.log(this.f.password.value)
-    console.log(this.f.repeatPassword.value)
+    this.submitted = true;
+
+    if (this.form.invalid) {
+      return;
+    }
+
+    var user: UserRegister = this.form.value;
+
+    this.loading = true;
+    this.accountService.registration(user)
+        .pipe(first())
+        .subscribe({
+          next: () => {
+            this.router.navigate(['../login'], { relativeTo: this.route})
+          },
+          error: error => {
+            this.loading = false;
+            this.submitted = false;
+          }
+        })
   }
 }
