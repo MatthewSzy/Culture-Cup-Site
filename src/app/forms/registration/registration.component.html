@@ -20,14 +20,14 @@
                         <mat-form-field appearance="fill" class="mat_form">
                             <mat-label>Nazwa użytkownika</mat-label>
                             <input matInput formControlName="userName" autocomplete="off">
-                            <mat-error *ngIf="f.email.invalid">Proszę wpisać e-mail</mat-error>
+                            <mat-error *ngIf="f.userName.invalid">{{this.invalidUserName}}</mat-error>
                          </mat-form-field>
                     </div>
                     <div class="form_group">
                         <mat-form-field appearance="fill" class="mat_form">
                             <mat-label>E-mail</mat-label>
                             <input matInput formControlName="email" autocomplete="off">
-                            <mat-error *ngIf="f.email.invalid">Proszę wpisać e-mail</mat-error>
+                            <mat-error *ngIf="f.email.invalid">{{this.invalidEmail}}</mat-error>
                          </mat-form-field>
                     </div>
                     <div class="form_group">
@@ -37,7 +37,7 @@
                             <button class="hide_button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>
-                            <mat-error *ngIf="f.password.invalid">Proszę wpisać hasło</mat-error>
+                            <mat-error *ngIf="f.password.invalid">{{this.invalidPassword}}</mat-error>
                         </mat-form-field>
                     </div>  
                     <div class="form_group">
@@ -47,7 +47,7 @@
                             <button class="hide_button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>
-                            <mat-error *ngIf="f.password.invalid">Proszę powtórzyć hasło</mat-error>
+                            <mat-error *ngIf="f.repeatPassword.invalid">{{this.invalidRepeatPassword}}</mat-error>
                         </mat-form-field>
                     </div>   
                     <button [disabled]="loading" class="register-button">
