@@ -16,30 +16,32 @@ export class LoginComponent implements OnInit {
   hide = true;
   loading = false;
   submitted = false;
+
+  invalidEmailOrUserName = 'Proszę podać nazwę użytkownika lub e-mail!';
+  invalidPassword = 'Proszę podać hasło!';
   
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private accountService: AccountService
-  ) { }
-
-  ngOnInit(): void {
+  ) { 
     this.form = this.formBuilder.group({
-      emailOrUserName: [''],
-      password: ['']
+      emailOrUserName: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
+
+  ngOnInit(): void { }
 
   get f() { return this.form.controls; }
 
   onSubmit() {
     this.submitted = true;
 
-    if (this.form.invalid) {
-      return;
-    }
-
+    if (this.form.invalid) { return; }
+    
+    this.clear();
     var user: UserLogin = this.form.value;
 
     this.loading = true;
@@ -50,10 +52,16 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['**'], { relativeTo: this.route})
           },
           error: error => {
-            console.log(error.error.message)
+            this.invalidEmailOrUserName = error.error.message;
+            this.form.controls['emailOrUserName'].setErrors({'incorrect': true});
             this.loading = false;
             this.submitted = false;
           }
         });
+  }
+
+  clear() {
+    this.invalidEmailOrUserName = 'Proszę podać nazwę użytkownika lub e-mail!';
+    this.invalidPassword = 'Proszę podać hasło!';
   }
 }

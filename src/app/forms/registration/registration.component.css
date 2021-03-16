@@ -120,6 +120,10 @@ li a:hover, li a:active {
     width: 70%;
 }
 
+.mat-error {
+    text-align: center;
+}
+
 ::ng-deep .mat-focused .mat-form-field-label {
     color: rgb(255, 180, 20) !important;
 }
