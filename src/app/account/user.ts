@@ -17,6 +17,6 @@ export class UserLogin {
 export class UserRegister {
     userName!: string;
     email!: string;
-    passwordHash!: string;
-    repeatPasswordHash!: string;
+    password!: string;
+    repeatPassword!: string;
 }
