@@ -1,0 +1,31 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="info_box1">
+        <h1>Nazwa Użytkownika</h1>
+        <div class="form_group">
+            <mat-form-field appearance="fill" class="mat_form">
+                <mat-label>Nazwa użytkownika</mat-label>
+                <input matInput formControlName="username" autocomplete="off">
+                <mat-error *ngIf="f.username.invalid">{{this.invalidUsername}}</mat-error>
+            </mat-form-field>
+        </div>
+        <h1>Data Założenia</h1>
+        <h2>{{this.creationDate}}</h2>
+    </div>
+    <div class="info_box2">
+        <h1>E-mail</h1>
+        <div class="form_group">
+            <mat-form-field appearance="fill" class="mat_form">
+                <mat-label>E-mail</mat-label>
+                <input matInput formControlName="email" autocomplete="off">
+                <mat-error *ngIf="f.email.invalid">{{this.invalidEmail}}</mat-error>
+            </mat-form-field>
+        </div>
+        <h1>Uprawnienia</h1>
+        <p *ngFor="let role of roles">
+            <td>{{role}}</td>
+        </p>
+    </div>
+    <button class="update_button">
+        Zmień swoje dane
+    </button>
+</form>

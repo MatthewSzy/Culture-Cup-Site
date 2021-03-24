@@ -15,7 +15,24 @@
             </li>
         </ul>
     </nav>
-</div>
-
-
-<router-outlet></router-outlet>
+    <div class="main_box">
+        <div class="center_box">
+            <div class="help_box"></div>
+            <div class="vertical_box">
+                <ul>
+                    <h1>Profil Użytkownika</h1>
+                    <li><a routerLink="/account/profile/info" routerLinkActive="active">- Twoje Dane</a></li>
+                    <li><a routerLink="/account/profile/edit" routerLinkActive="active">- Edytuj Dane</a></li>
+                    <li><a routerLink="/account/profile/delete" routerLinkActive="active">- Usuń Konto</a></li>
+                    <h1 *ngIf="adminRole">Profil Administratora</h1>
+                    <li *ngIf="adminRole"><a>- Lista Użytkowników</a></li>
+                    <li *ngIf="adminRole"><a>- Dodaj Film</a></li>
+                    <li *ngIf="adminRole"><a>- Dodaj Grę</a></li>
+                </ul>
+            </div>
+            <div class="data_box">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>  

@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 
 import { LayoutComponent } from './layout.component';
-import { FormsRoutingModule } from './forms-routing.module';
+import { AccountRoutingModule } from './account-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 
@@ -21,7 +21,7 @@ const modules = [
         [...modules],
         CommonModule,
         ReactiveFormsModule,
-        FormsRoutingModule
+        AccountRoutingModule
     ],
     exports: [
         [...modules],
@@ -29,7 +29,7 @@ const modules = [
     declarations: [
         LayoutComponent,
         LoginComponent,
-        RegistrationComponent
+        RegistrationComponent,
     ]
 })
-export class FormsModule { }
+export class AccountModule { }
