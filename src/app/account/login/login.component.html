@@ -14,20 +14,13 @@
     <div class="color_box">
         <div class="center_box">
             <div class="form_box">
-                <p>ZAŁÓŻ NOWE KONTO</p>
+                <p>ZALOGUJ SIĘ NA KONTO</p>
                 <form [formGroup]="form" (ngSubmit)="onSubmit()">
                     <div class="form_group">
                         <mat-form-field appearance="fill" class="mat_form">
-                            <mat-label>Nazwa użytkownika</mat-label>
-                            <input matInput formControlName="userName" autocomplete="off">
-                            <mat-error *ngIf="f.userName.invalid">{{this.invalidUserName}}</mat-error>
-                         </mat-form-field>
-                    </div>
-                    <div class="form_group">
-                        <mat-form-field appearance="fill" class="mat_form">
-                            <mat-label>E-mail</mat-label>
-                            <input matInput formControlName="email" autocomplete="off">
-                            <mat-error *ngIf="f.email.invalid">{{this.invalidEmail}}</mat-error>
+                            <mat-label>Nazwa Użytkownika</mat-label>
+                            <input matInput formControlName="username" autocomplete="off">
+                            <mat-error *ngIf="f.username.invalid">{{this.invalidUsername}}</mat-error>
                          </mat-form-field>
                     </div>
                     <div class="form_group">
@@ -39,22 +32,12 @@
                             </button>
                             <mat-error *ngIf="f.password.invalid">{{this.invalidPassword}}</mat-error>
                         </mat-form-field>
-                    </div>  
-                    <div class="form_group">
-                        <mat-form-field appearance="fill" class="mat_form">
-                            <mat-label>Powtórz Hasło</mat-label>
-                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="repeatPassword" autocomplete="off">
-                            <button class="hide_button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                            </button>
-                            <mat-error *ngIf="f.repeatPassword.invalid">{{this.invalidRepeatPassword}}</mat-error>
-                        </mat-form-field>
-                    </div>   
-                    <button [disabled]="loading" class="register-button">
-                        Załóż konto
-                    </button>
-                    <button routerLink="../login" class="login-button">
+                    </div>    
+                    <button class="login-button">
                         Zaloguj się
+                    </button>
+                    <button routerLink="../registration" class="register-button">
+                        Załóż nowe konto
                     </button>
                 </form>
             </div>

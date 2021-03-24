@@ -11,7 +11,7 @@
 .menu_box {
     margin: auto;
     height: 100px;
-    width: 50%;
+    width: 50.1%;
 }
 
 ul {
@@ -57,4 +57,28 @@ li a:hover, li a:active {
 .logo a:hover, .logo a:active {
     border-bottom: 0px solid rgb(255, 200, 50);
     cursor: pointer;
+}
+
+.profile {
+    width: 210px;
+}
+
+.profile a {
+    text-align: right;
+}
+
+li:hover > ul {
+    display: block;
+}
+
+li > ul {
+    display: none;
+    background-color: rgba(179, 46, 32, 1);
+}
+
+li > ul a {
+    text-align: right;
+    margin-top: 10px;
+    padding-left: 20px;
+    background-color: rgba(179, 46, 32, 1);
 }

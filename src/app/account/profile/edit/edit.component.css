@@ -1,0 +1,95 @@
+.info_box1 {
+    width: 40%;
+    position: static;
+    vertical-align:top;
+    display: inline-block;
+    margin-top: 35px;
+}
+
+.info_box1 h1 {
+    font-size: 30px;
+    border-bottom: 1px solid black;
+}
+
+.info_box1 h2 {
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 30px;
+}
+
+.info_box2 {
+    width: 40%;
+    position: static;
+    vertical-align:top;
+    display: inline-block;
+    margin-top: 35px;
+    margin-left: 100px;
+}
+
+.info_box2 h1 {
+    font-size: 30px;
+    border-bottom: 1px solid black;
+}
+
+.info_box2 p {
+    margin-top: 55px;
+    margin-bottom: 50px;
+    margin-left: 30px;
+}
+
+.info_box2 td {
+    font-size: 20px;
+}
+
+.form_group {
+    width: 100%;
+    font-size: 17px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.mat_form {
+    width: 100%;
+}
+
+.mat-error {
+    text-align: center;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    color: rgb(255, 180, 20) !important;
+}
+  
+::ng-deep.mat-form-field-underline {
+    background-color: rgb(255, 180, 20) !important;
+} 
+  
+::ng-deep.mat-form-field-ripple {
+    background-color: rgb(255, 180, 20) !important;;
+}
+
+.update_button {
+    width: 80%;
+    font-size: 20px;
+    padding: 15px;
+    margin: 10px;
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    color: black;
+    background-color: rgb(255, 180, 20);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.update_button:hover {
+    background-color: rgb(255, 160, 0);
+    cursor: pointer;
+}
+
+.update_button:focus {
+    outline: 0;
+    cursor: pointer;
+}
