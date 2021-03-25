@@ -30,8 +30,8 @@ export class AuthService {
     }, httpOptions);
   }
 
-  update(username: string, email: string): Observable<any> {
-    return this.http.put(AUTH_API + 'update', {
+  update(id: string, username: string, email: string): Observable<any> {
+    return this.http.put(AUTH_API + `update/${id}`, {
       username,
       email
     }, httpOptions);

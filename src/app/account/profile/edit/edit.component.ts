@@ -13,6 +13,7 @@ export class EditComponent implements OnInit {
 
   form!: FormGroup;
   isLoggedIn!: boolean;
+  id = '0';
   username?: string;
   email?: string;
   creationDate?: Date;
@@ -38,6 +39,7 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
     if(this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
+      this.id = user.id;
       this.username = user.username;
       this.email = user.email;
       this.creationDate = user.creationDate;
@@ -56,7 +58,7 @@ export class EditComponent implements OnInit {
     if (this.form.invalid) { return; }
     this.clear();
 
-    this.authService.update(this.f.username.value, this.f.email.value).subscribe(
+    this.authService.update(this.id, this.f.username.value, this.f.email.value).subscribe(
       data => {
         this.tokenStorageService.saveUser(data);
         window.location.reload();
