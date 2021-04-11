@@ -25,6 +25,7 @@
 .menu_box li {
     float: left;
     display: inline;
+    background-color: rgba(179, 46, 32, 1);
     font-size: 20px;
     margin-top: 45px;
     margin-left: 15px;
@@ -64,7 +65,23 @@
 }
 
 .menu_box .profile a {
+    padding: 6px 20px;
     text-align: right;
+}
+
+.menu_box .profile a img {
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.menu_box .profile ul {
+    padding-right: 0px;
+}
+
+.menu_box .profile ul a {
+    text-align: right;
+    padding-top: 15px;
+    padding-bottom: 20px;
 }
 
 .menu_box li:hover > ul {

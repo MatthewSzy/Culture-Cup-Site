@@ -1,0 +1,11 @@
+<div class="photo_box">
+    <h1>Wybierz zdjęcie, które zostanie ustawione jako twoje zdjęcie profilowe.</h1>
+    <input id="imgInp" type="file" accept="image/*" (change)="onFileSelected($event)">
+    <h2 *ngIf="invalidPrint">{{invalidUpload}}</h2>
+</div>
+<div class="image_box">
+    <img id="img" [src]="image" *ngIf="selectedFile" style="width: 300px; height: 300px">
+</div>
+<button class="photo_button" (click)="uploadPhoto()">
+    Wyślij Zdjęcie
+</button>

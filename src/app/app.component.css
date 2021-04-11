@@ -62,7 +62,23 @@ li a:hover, li a:active {
 }
 
 .profile a {
+    padding: 6px 20px;
     text-align: right;
+}
+
+.profile a img {
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.profile ul {
+    padding-right: 0px;
+}
+
+.profile ul a {
+    text-align: right;
+    padding-top: 15px;
+    padding-bottom: 20px;
 }
 
 li:hover > ul {

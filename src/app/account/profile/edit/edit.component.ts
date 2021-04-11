@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/_services/auth.service';
+import { UserService } from 'src/app/_services/user.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class EditComponent implements OnInit {
 
   form!: FormGroup;
   isLoggedIn!: boolean;
+  hide = true;
   id = '0';
   username?: string;
   email?: string;
@@ -21,18 +22,20 @@ export class EditComponent implements OnInit {
 
   invalidUsername = 'Proszę podać nazwę użytkownika!';
   invalidEmail = 'Proszę podać e-mail!';
+  invalidPassword = 'Proszę podać hasło!';
 
   constructor(
       private formBuilder: FormBuilder,
       private tokenStorageService: TokenStorageService,
       private route: ActivatedRoute,
-      private authService: AuthService,
+      private userService: UserService,
       private router: Router
   ) {
       this.isLoggedIn = !!this.tokenStorageService.getToken();
       this.form = this.formBuilder.group({
         username: ['', Validators.required],
         email: ['', Validators.required],
+        password: ['', Validators.required]
       });
   }
 
@@ -58,8 +61,9 @@ export class EditComponent implements OnInit {
     if (this.form.invalid) { return; }
     this.clear();
 
-    this.authService.update(this.id, this.f.username.value, this.f.email.value).subscribe(
+    this.userService.update(this.id, this.f.username.value, this.f.email.value, this.f.password.value).subscribe(
       data => {
+        this.tokenStorageService.saveToken(data.token);
         this.tokenStorageService.saveUser(data);
         window.location.reload();
       },
@@ -75,6 +79,10 @@ export class EditComponent implements OnInit {
         else if(error.error.message == 'Podany e-mail jest nie prawidłowy!') {
           this.invalidEmail = error.error.message;
           this.form.controls['email'].setErrors({'incorrect': true});
+        }
+        else if(error.error.message == 'Bad credentials') {
+          this.invalidPassword = 'Podano błędne hasło!';
+          this.form.controls['password'].setErrors({'incorrect': true});
         }
       }
     );

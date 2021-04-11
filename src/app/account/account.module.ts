@@ -9,6 +9,7 @@ import { LayoutComponent } from './layout.component';
 import { AccountRoutingModule } from './account-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { authInterceptorProviders } from '../_helpers/auth.interceptor';
 
 const modules = [
     MatFormFieldModule,
@@ -26,6 +27,7 @@ const modules = [
     exports: [
         [...modules],
     ],
+    providers: [authInterceptorProviders],
     declarations: [
         LayoutComponent,
         LoginComponent,

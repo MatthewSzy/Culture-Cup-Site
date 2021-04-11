@@ -10,6 +10,9 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { InfoComponent } from './info/info.component';
 import { EditComponent } from './edit/edit.component';
 import { DeleteComponent } from './delete/delete.component';
+import { UserlistComponent } from './userlist/userlist.component';
+import { authInterceptorProviders } from 'src/app/_helpers/auth.interceptor';
+import { PhotoComponent } from './photo/photo.component';
 
 const modules = [
     MatFormFieldModule,
@@ -27,11 +30,14 @@ const modules = [
     exports: [
         [...modules],
     ],
+    providers: [authInterceptorProviders],
     declarations: [
         LayoutComponent,
         InfoComponent,
         EditComponent,
         DeleteComponent,
+        UserlistComponent,
+        PhotoComponent,
     ]
 })
 export class ProfileModule { }

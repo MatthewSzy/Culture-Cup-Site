@@ -6,11 +6,11 @@
             <li><a routerLink="" routerLinkActive="active">GRY</a></li>
             <li *ngIf="!isLoggedIn" style="float:right"><a routerLink="/account/registration" routerLinkActive="active">Dołącz do nas</a></li>
             <li *ngIf="!isLoggedIn" style="float:right"><a routerLink="/account/login" routerLinkActive="active">Zaloguj się</a></li>
-            <li class="profile" *ngIf="isLoggedIn" style="float:right"><a>{{username}}</a>
+            <li class="profile" *ngIf="isLoggedIn" style="float:right"><a><img *ngIf='profileImage' [src]='profileImage' width="37px" height="37px"><img *ngIf='!profileImage' src="\assets\images\usericon.png" width="37px" height="37px"> {{username}}</a>
                 <ul>
-                    <a routerLink="/account/profile" routerLinkActive="active">Profil</a>
-                    <a routerLink="/library" routerLinkActive="active">Biblioteka</a>
-                    <a (click)="logout()">Wyloguj się</a>
+                    <a class="profileElement" routerLink="/account/profile" routerLinkActive="active">Profil</a>
+                    <a class="profileElement" routerLink="/library" routerLinkActive="active">Biblioteka</a>
+                    <a class="profileElement" (click)="logout()">Wyloguj się</a>
                 </ul>
             </li>
         </ul>

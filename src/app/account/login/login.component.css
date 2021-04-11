@@ -23,6 +23,7 @@ ul {
 li {
     float: left;
     display: inline;
+    background-color: rgba(179, 46, 32, 1);
     font-size: 20px;
     margin-top: 45px;
     margin-left: 15px;

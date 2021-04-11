@@ -1,0 +1,50 @@
+.photo_box {
+    margin-top: 35px;
+}
+
+.photo_box h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.photo_box h2 {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.photo_box input {
+    margin-left: 20%;
+    margin-right: 35%;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.image_box {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.photo_button {
+    width: 60%;
+    font-size: 20px;
+    padding: 15px;
+    margin-top: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+    color: black;
+    background-color: rgb(255, 180, 20);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.photo_button:hover {
+    background-color: rgb(255, 160, 0);
+    cursor: pointer;
+}
+
+.photo_button:focus {
+    outline: 0;
+    cursor: pointer;
+}

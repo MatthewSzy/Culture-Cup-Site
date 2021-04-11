@@ -44,9 +44,36 @@
 
 .form_group {
     width: 100%;
-    font-size: 17px;
+    font-size: 18px;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.form_group2 {
+    margin-left: 25%;
+    margin-right: 33%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form_group2 h1 {
+    font-size: 25px;
+}
+
+.form_group2 input {
+    font-size: 18px;
+}
+
+.hide_button {
+    font-size: 20px;
+    border: 0;
+    cursor: pointer;
+}
+
+.hide_button:focus {
+    outline: 0;
+    cursor: pointer;
 }
 
 .mat_form {
@@ -55,6 +82,7 @@
 
 .mat-error {
     text-align: center;
+    font-size: 18px;
 }
 
 ::ng-deep .mat-focused .mat-form-field-label {
@@ -75,8 +103,8 @@
     padding: 15px;
     margin: 10px;
     margin-top: 20px;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 6%;
+    margin-right: 5%;
     color: black;
     background-color: rgb(255, 180, 20);
     border: 0;
