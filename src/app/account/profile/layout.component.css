@@ -2,7 +2,6 @@
     margin-top: -100px;
     height: 100px;
     background-color: rgba(179, 46, 32, 1);
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .horizontal_box:hover {
@@ -26,6 +25,7 @@
 .menu_box li {
     float: left;
     display: inline;
+    background-color: rgba(179, 46, 32, 1);
     font-size: 20px;
     margin-top: 45px;
     margin-left: 15px;
@@ -43,7 +43,6 @@
 .menu_box li a:hover, li a:active {
     color: rgb(255, 200, 50);
     border-bottom: 5px solid rgb(255, 200, 50);
-    text-shadow: -0px 0 black, 0 0px black, 0px 0 black, 0 -0px black;
     cursor: pointer;
 }
 
@@ -66,7 +65,23 @@
 }
 
 .menu_box .profile a {
+    padding: 6px 20px;
     text-align: right;
+}
+
+.menu_box .profile a img {
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.menu_box .profile ul {
+    padding-right: 0px;
+}
+
+.menu_box .profile ul a {
+    text-align: right;
+    padding-top: 15px;
+    padding-bottom: 20px;
 }
 
 .menu_box li:hover > ul {

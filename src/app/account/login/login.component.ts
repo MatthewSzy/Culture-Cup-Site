@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/_services/auth.service';
+import { UserService } from 'src/app/_services/user.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -24,8 +25,9 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService,
-    private tokenStorageService: TokenStorageService
+    private userService: UserService,
+    private tokenStorageService: TokenStorageService,
+    private sanitizer: DomSanitizer
   ) { 
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     this.form = this.formBuilder.group({
@@ -48,11 +50,10 @@ export class LoginComponent implements OnInit {
     
     this.clear();
 
-    this.authService.login(this.f.username.value, this.f.password.value).subscribe(
-          data => {
-            this.tokenStorageService.saveToken(data.accessToken);
-            this.tokenStorageService.saveUser(data);
-            this.roles = this.tokenStorageService.getUser().roles;
+    this.userService.login(this.f.username.value, this.f.password.value).subscribe(
+          response => {
+            this.tokenStorageService.saveToken(response.token);
+            this.tokenStorageService.saveUser(response);
 
             this.router.navigate(['**'], { relativeTo: this.route})
               .then(() => {

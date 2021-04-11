@@ -9,6 +9,7 @@
     <h2>{{this.email}}</h2>
     <h1>Uprawnienia</h1>
     <p *ngFor="let role of roles">
-        <td>{{role}}</td>
+        <td *ngIf="role == 'ROLE_ADMIN'">- Administrator</td>
+        <td *ngIf="role == 'ROLE_USER'">- Użytkownik</td>
     </p>
 </div>

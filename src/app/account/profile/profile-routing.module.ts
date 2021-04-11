@@ -4,6 +4,8 @@ import { DeleteComponent } from './delete/delete.component';
 import { EditComponent } from './edit/edit.component';
 import { InfoComponent } from './info/info.component';
 import { LayoutComponent } from './layout.component';
+import { PhotoComponent } from './photo/photo.component';
+import { UserlistComponent } from './userlist/userlist.component';
 
 const routes: Routes = [
     {
@@ -11,7 +13,9 @@ const routes: Routes = [
         children: [
             { path: 'info', component: InfoComponent },
             { path: 'edit', component: EditComponent },
+            { path: 'photo', component: PhotoComponent },
             { path: 'delete', component: DeleteComponent },
+            { path: 'userlist', component: UserlistComponent },
         ]
     }
 ];

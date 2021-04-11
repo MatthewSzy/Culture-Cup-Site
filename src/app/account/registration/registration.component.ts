@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { AuthService } from 'src/app/_services/auth.service';
+import { UserService } from 'src/app/_services/user.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService,
+    private userService: UserService,
     private tokenStorageService: TokenStorageService
   ) { 
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -57,7 +57,7 @@ export class RegistrationComponent implements OnInit {
       return;
     }
 
-    this.authService.registration(this.f.username.value, this.f.email.value, this.f.password.value, this.role)
+    this.userService.registration(this.f.username.value, this.f.email.value, this.f.password.value, this.role)
       .pipe(first())
         .subscribe({
           next: () => {

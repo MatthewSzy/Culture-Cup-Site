@@ -1,0 +1,49 @@
+<div class="list_box">
+    <h1>Użytkownicy</h1>
+    <table class="table_box">
+        <thead>
+            <tr>
+                <th style="width: 20%">Nazwa</th>
+                <th style="width: 50%">E-mail</th>
+                <th style="width: 20%">Data Utworzenia</th>
+                <th style="width: 10%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td style="width: 20%" *ngIf="user.roles[0] != 'ROLE_ADMIN' && user.roles[1] != 'ROLE_ADMIN'">{{user.username}}</td>
+                <td style="width: 50%" *ngIf="user.roles[0] != 'ROLE_ADMIN' && user.roles[1] != 'ROLE_ADMIN'">{{user.email}}</td>
+                <td style="width: 20%" *ngIf="user.roles[0] != 'ROLE_ADMIN' && user.roles[1] != 'ROLE_ADMIN'">{{user.creationDate}}</td>
+                <td style="width: 10%" *ngIf="user.roles[0] != 'ROLE_ADMIN' && user.roles[1] != 'ROLE_ADMIN'">
+                    <button (click)="addAdmin(user.id)" class="button_class">
+                        Nadaj Administratora
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>Administratorzy</h1>
+    <table class="table_box">
+        <thead>
+            <tr>
+                <th style="width: 20%">Nazwa</th>
+                <th style="width: 50%">E-mail</th>
+                <th style="width: 20%">Data Utworzenia</th>
+                <th style="width: 10%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td style="width: 20%" *ngIf="user.roles[0] == 'ROLE_ADMIN' || user.roles[1] == 'ROLE_ADMIN'">{{user.username}}</td>
+                <td style="width: 50%" *ngIf="user.roles[0] == 'ROLE_ADMIN' || user.roles[1] == 'ROLE_ADMIN'">{{user.email}}</td>
+                <td style="width: 20%" *ngIf="user.roles[0] == 'ROLE_ADMIN' || user.roles[1] == 'ROLE_ADMIN'">{{user.creationDate}}</td>
+                <td style="width: 10%" *ngIf="(user.roles[0] == 'ROLE_ADMIN' || user.roles[1] == 'ROLE_ADMIN') && user.username != username">
+                    <button (click)="deleteAdmin(user.id)" class="button_class">
+                        Usuń Administratora
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
