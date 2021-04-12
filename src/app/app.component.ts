@@ -30,8 +30,7 @@ export class AppComponent implements OnInit {
       this.id = user.id;
       this.username = user.username;
 
-      let imageName = user.imageName;
-      if(imageName != "") this.getImage();
+      if(user.imageId !== null) this.getImage();
     }
   }
 
@@ -42,7 +41,7 @@ export class AppComponent implements OnInit {
         this.profileImage = this.sanitizer.bypassSecurityTrustUrl(object);
       },
       error => {
-        this.profileImage = null;
+        this.profileImage = undefined;
       }
     )
   }

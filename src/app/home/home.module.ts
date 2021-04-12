@@ -6,13 +6,13 @@ import { LayoutComponent } from './layout.component';
 import { HomeRoutingModule } from './home-routing.module';
 
 @NgModule({
+    declarations: [
+        LayoutComponent
+    ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
         HomeRoutingModule
-    ],
-    declarations: [
-        LayoutComponent
     ]
 })
 export class HomeModule { }

@@ -21,6 +21,14 @@ const modules = [
 ]
 
 @NgModule({
+    declarations: [
+        LayoutComponent,
+        InfoComponent,
+        EditComponent,
+        DeleteComponent,
+        UserlistComponent,
+        PhotoComponent,
+    ],
     imports: [
         [...modules],
         CommonModule,
@@ -30,14 +38,6 @@ const modules = [
     exports: [
         [...modules],
     ],
-    providers: [authInterceptorProviders],
-    declarations: [
-        LayoutComponent,
-        InfoComponent,
-        EditComponent,
-        DeleteComponent,
-        UserlistComponent,
-        PhotoComponent,
-    ]
+    providers: [authInterceptorProviders]
 })
 export class ProfileModule { }

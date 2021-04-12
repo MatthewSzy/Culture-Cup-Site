@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 import { UserService } from 'src/app/_services/user.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
@@ -57,31 +56,29 @@ export class RegistrationComponent implements OnInit {
       return;
     }
 
-    this.userService.registration(this.f.username.value, this.f.email.value, this.f.password.value, this.role)
-      .pipe(first())
-        .subscribe({
-          next: () => {
-            this.router.navigate(['../login'], { relativeTo: this.route})
-          },
-          error: error => {
-            if(error.error.message == 'Użytkownik o podanej nazwie już istnieje!') {
-              this.invalidUsername = error.error.message;
-              this.form.controls['username'].setErrors({'incorrect': true});
-            }
-            else if(error.error.message == 'Użytkownik o podanym e-mailu już istnieje!') {
-              this.invalidEmail = error.error.message;
-              this.form.controls['email'].setErrors({'incorrect': true});
-            }
-            else if(error.error.message == 'Podany e-mail jest nie prawidłowy!') {
-              this.invalidEmail = error.error.message;
-              this.form.controls['email'].setErrors({'incorrect': true});
-            }
-            else if(error.error.message == 'Podane hasło jest nie prawidłowe!') {
-              this.invalidPassword = 'Podane hasło jest nie prawidłowe, musi ono zawierać 8 znaków, małą i wielką literę, cyfrę oraz znak specjalny.';
-              this.form.controls['password'].setErrors({'incorrect': true});
-            }
-          }
-        });
+    this.userService.registration(this.f.username.value, this.f.email.value, this.f.password.value, this.role).subscribe(
+      response => {
+        this.router.navigate(['../login'], { relativeTo: this.route})
+      },
+      error => {
+        if(error.error.message == 'Użytkownik o podanej nazwie już istnieje!') {
+          this.invalidUsername = error.error.message;
+          this.form.controls['username'].setErrors({'incorrect': true});
+        }
+        else if(error.error.message == 'Użytkownik o podanym e-mailu już istnieje!') {
+          this.invalidEmail = error.error.message;
+          this.form.controls['email'].setErrors({'incorrect': true});
+        }
+        else if(error.error.message == 'Podany e-mail jest nie prawidłowy!') {
+          this.invalidEmail = error.error.message;
+          this.form.controls['email'].setErrors({'incorrect': true});
+        }
+        else if(error.error.message == 'Podane hasło jest nie prawidłowe!') {
+          this.invalidPassword = 'Podane hasło jest nie prawidłowe, musi ono zawierać 8 znaków, małą i wielką literę, cyfrę oraz znak specjalny.';
+          this.form.controls['password'].setErrors({'incorrect': true});
+        }
+      }
+    );
   }
 
   clear() {
