@@ -21,22 +21,22 @@ export class PhotoComponent implements OnInit {
   invalidUpload = 'Błąd podczas wysyłania zdjęcia';
 
   constructor(
-      private tokenStorageService: TokenStorageService,
-      private route: ActivatedRoute,
-      private userService: UserService,
-      private router: Router,
-      private sanitizer: DomSanitizer
+    private tokenStorageService: TokenStorageService,
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {
-      this.isLoggedIn = !!this.tokenStorageService.getToken();
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
   }
 
   ngOnInit(): void {
-    if(this.isLoggedIn) {
+    if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.id = user.id;
     }
     else {
-      this.router.navigate(['../login'], { relativeTo: this.route})
+      this.router.navigate(['../login'], { relativeTo: this.route })
     }
   }
 

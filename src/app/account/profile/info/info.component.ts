@@ -10,21 +10,21 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 export class InfoComponent implements OnInit {
 
   isLoggedIn!: boolean;
-  username?: string;
-  email?: string;
-  creationDate?: Date;
+  username!: string;
+  email!: string;
+  creationDate!: Date;
   roles: string[] = [];
 
   constructor(
-      private tokenStorageService: TokenStorageService,
-      private route: ActivatedRoute,
-      private router: Router
+    private tokenStorageService: TokenStorageService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
-      this.isLoggedIn = !!this.tokenStorageService.getToken();
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
   }
 
   ngOnInit(): void {
-    if(this.isLoggedIn) {
+    if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.username = user.username;
       this.email = user.email;
@@ -32,8 +32,7 @@ export class InfoComponent implements OnInit {
       this.roles = user.roles;
     }
     else {
-      this.router.navigate(['../login'], { relativeTo: this.route})
+      this.router.navigate(['../login'], { relativeTo: this.route })
     }
   }
-
 }

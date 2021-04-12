@@ -17,30 +17,30 @@ export class UserlistComponent implements OnInit {
   errorPrint: boolean = false;
 
   constructor(
-      private tokenStorageService: TokenStorageService,
-      private route: ActivatedRoute,
-      private adminService: AdminService,
-      private router: Router
-  ) { 
-      this.isLoggedIn = !!this.tokenStorageService.getToken();
+    private tokenStorageService: TokenStorageService,
+    private route: ActivatedRoute,
+    private adminService: AdminService,
+    private router: Router
+  ) {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
   }
 
   ngOnInit(): void {
-    if(this.isLoggedIn) {
+    if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.username = user.username;
       this.roles = user.roles;
     }
     else {
-      this.router.navigate(['../login'], { relativeTo: this.route})
+      this.router.navigate(['../login'], { relativeTo: this.route })
     }
 
     this.adminService.getUsers().subscribe(
-      data => {
-        this.users = data;
+      response => {
+        this.users = response;
       },
       error => {
-        if(error.error.message == 'Nie uda się pobrać listy użytkowników, lista jest pusta!') {
+        if (error.error.message == 'Nie uda się pobrać listy użytkowników, lista jest pusta!') {
           this.errorPrint = true;
         }
       }
@@ -49,23 +49,17 @@ export class UserlistComponent implements OnInit {
 
   addAdmin(id: string) {
     this.adminService.setAdminRole(id).subscribe(
-      data => {
+      response => {
         window.location.reload();
       },
-      error => {
-
-      }
     )
   }
 
   deleteAdmin(id: string) {
     this.adminService.deleteAdminRole(id).subscribe(
-      data => {
+      response => {
         window.location.reload();
       },
-      error => {
-        
-      }
     )
   }
 }

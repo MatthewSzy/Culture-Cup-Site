@@ -18,6 +18,11 @@ const modules = [
 ]
 
 @NgModule({
+    declarations: [
+        LayoutComponent,
+        LoginComponent,
+        RegistrationComponent,
+    ],
     imports: [
         [...modules],
         CommonModule,
@@ -27,11 +32,6 @@ const modules = [
     exports: [
         [...modules],
     ],
-    providers: [authInterceptorProviders],
-    declarations: [
-        LayoutComponent,
-        LoginComponent,
-        RegistrationComponent,
-    ]
+    providers: [authInterceptorProviders]
 })
 export class AccountModule { }

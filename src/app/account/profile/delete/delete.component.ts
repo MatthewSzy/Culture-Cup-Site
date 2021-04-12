@@ -11,38 +11,38 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 })
 export class DeleteComponent implements OnInit {
 
-  isLoggedIn!: boolean;
-  hide = true;
   form!: FormGroup;
+  hide = true;
 
+  isLoggedIn!: boolean;
+  id!: string;
   username!: string;
-  id = '0';
 
   invalidPassword = 'Proszę podać hasło!';
   errorInfo = false;
   errorDelete = 'Coś poszło nie tak!';
 
   constructor(
-      private formBuilder: FormBuilder,
-      private tokenStorageService: TokenStorageService,
-      private route: ActivatedRoute,
-      private userService: UserService,
-      private router: Router
+    private formBuilder: FormBuilder,
+    private tokenStorageService: TokenStorageService,
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private router: Router
   ) {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     this.form = this.formBuilder.group({
-        password: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
-    if(this.isLoggedIn) {
+    if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.id = user.id;
       this.username = user.username;
     }
     else {
-      this.router.navigate(['../login'], { relativeTo: this.route})
+      this.router.navigate(['../login'], { relativeTo: this.route })
     }
   }
 
@@ -53,23 +53,23 @@ export class DeleteComponent implements OnInit {
     this.clear();
 
     this.userService.auth(this.username, this.f.password.value).subscribe(
-      data => {
+      response => {
         this.userService.delete(this.id).subscribe(
-          leave => {
+          response => {
             this.logout();
-            this.router.navigate(['**'], { relativeTo: this.route})
+            this.router.navigate(['**'], { relativeTo: this.route })
           },
           error => {
-            if(error.error.message == 'Podany użytkownik nie został odnaleziony!') {
+            if (error.error.message == 'Podany użytkownik nie został odnaleziony!') {
               this.invalidPassword = error.error.message;
-              this.form.controls['password'].setErrors({'incorrect': true});
+              this.form.controls['password'].setErrors({ 'incorrect': true });
             }
           }
         )
       },
       error => {
         this.invalidPassword = 'Podane hasło jest błędne!';
-        this.form.controls['password'].setErrors({'incorrect': true});
+        this.form.controls['password'].setErrors({ 'incorrect': true });
       }
     )
   }
