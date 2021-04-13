@@ -13,6 +13,7 @@ import { DeleteComponent } from './delete/delete.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { authInterceptorProviders } from 'src/app/_helpers/auth.interceptor';
 import { PhotoComponent } from './photo/photo.component';
+import { AddmovieComponent } from './addmovie/addmovie.component';
 
 const modules = [
     MatFormFieldModule,
@@ -28,6 +29,7 @@ const modules = [
         DeleteComponent,
         UserlistComponent,
         PhotoComponent,
+        AddmovieComponent,
     ],
     imports: [
         [...modules],

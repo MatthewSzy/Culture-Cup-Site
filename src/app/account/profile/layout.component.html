@@ -27,8 +27,8 @@
                     <li><a routerLink="/account/profile/delete" routerLinkActive="active">- Usuń Konto</a></li>
                     <h1 *ngIf="adminRole">Profil Administratora</h1>
                     <li *ngIf="adminRole"><a routerLink="/account/profile/userlist" routerLinkActive="active">- Nadaj/Usuń Administratora</a></li>
-                    <!--<li *ngIf="adminRole"><a>- Dodaj Film</a></li>
-                    <li *ngIf="adminRole"><a>- Dodaj Grę</a></li>-->
+                    <li *ngIf="adminRole"><a routerLink="/account/profile/addmovie">- Dodaj Film</a></li>
+                    <!--<li *ngIf="adminRole"><a>- Dodaj Grę</a></li>-->
                 </ul>
             </div>
             <div class="data_box">

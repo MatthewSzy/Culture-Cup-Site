@@ -55,7 +55,7 @@ export class PhotoComponent implements OnInit {
     this.userService.upload(this.id, this.selectedFile).subscribe(
       response => {
         const user = this.tokenStorageService.getUser();
-        user.imageName = response.message;
+        user.imageId = response.message;
 
         this.tokenStorageService.saveUser(user);
         window.location.reload();
