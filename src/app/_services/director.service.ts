@@ -13,6 +13,10 @@ const httpOptions = {
 export class DirectorService {
   constructor(private http: HttpClient) { }
 
+  getAll() {
+    return this.http.get(DIRECTOR_API + 'get/all', httpOptions);
+  }
+
   addDirector(firstName: string, secondName: string, nationality: string) {
     return this.http.post(DIRECTOR_API + 'add', {
       firstName,

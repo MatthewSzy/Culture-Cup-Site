@@ -29,16 +29,15 @@ export class AppComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.id = user.id;
       this.username = user.username;
-
-      if(user.imageId !== null) this.getImage();
+      this.getImage();
     }
   }
 
   getImage() {
     this.userService.getImage(this.id).subscribe(
       response => {
-        let object = 'data:image/jpeg;base64,' + response.imageBytes;
-        this.profileImage = this.sanitizer.bypassSecurityTrustUrl(object);
+        let bytes = 'data:image/jpeg;base64,' + response.profileImage;
+        this.profileImage = this.sanitizer.bypassSecurityTrustUrl(bytes);
       },
       error => {
         this.profileImage = undefined;

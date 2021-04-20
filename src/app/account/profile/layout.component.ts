@@ -51,8 +51,8 @@ export class LayoutComponent {
     getImage() {
         this.userService.getImage(this.id).subscribe(
             response => {
-                let object = 'data:image/jpeg;base64,' + response.imageBytes;
-                this.profileImage = this.sanitizer.bypassSecurityTrustUrl(object);
+                let bytes = 'data:image/jpeg;base64,' + response.profileImage;
+                this.profileImage = this.sanitizer.bypassSecurityTrustUrl(bytes);
             },
             error => {
                 this.profileImage = undefined;

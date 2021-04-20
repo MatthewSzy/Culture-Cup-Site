@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule} from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
+import { MatSelectModule } from '@angular/material/select'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { LayoutComponent } from './layout.component';
 import { ProfileRoutingModule } from './profile-routing.module';
@@ -18,7 +20,8 @@ import { AddmovieComponent } from './addmovie/addmovie.component';
 const modules = [
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
 ]
 
 @NgModule({
@@ -35,7 +38,8 @@ const modules = [
         [...modules],
         CommonModule,
         ReactiveFormsModule,
-        ProfileRoutingModule
+        ProfileRoutingModule,
+        FontAwesomeModule
     ],
     exports: [
         [...modules],
