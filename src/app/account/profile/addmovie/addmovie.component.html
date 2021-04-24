@@ -83,7 +83,6 @@
                 <mat-select class="mat_select" (selectionChange)="addCategory($event.value)">
                     <mat-option *ngFor="let category of categories" [value]="category" class="mat_option">{{category}}</mat-option>
                 </mat-select>
-                <mat-error *ngIf="this.invalidMovieCategoryCheck">{{this.invalidMovieCategory}}</mat-error>
             </mat-form-field>
         </div>
         <div class="movie_form">

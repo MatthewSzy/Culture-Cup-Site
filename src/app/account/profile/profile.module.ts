@@ -16,6 +16,7 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { authInterceptorProviders } from 'src/app/_helpers/auth.interceptor';
 import { PhotoComponent } from './photo/photo.component';
 import { AddmovieComponent } from './addmovie/addmovie.component';
+import { AddgameComponent } from './addgame/addgame.component';
 
 const modules = [
     MatFormFieldModule,
@@ -33,6 +34,7 @@ const modules = [
         UserlistComponent,
         PhotoComponent,
         AddmovieComponent,
+        AddgameComponent,
     ],
     imports: [
         [...modules],

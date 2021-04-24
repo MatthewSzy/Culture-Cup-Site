@@ -1,0 +1,139 @@
+<div class="button_box">
+    <button class="route_button" (click)="developerDisplay()">Dodaj Producenta</button>
+    <button class="route_button" (click)="gameDisplay()">Dodaj Grę</button>
+    <button class="route_button" (click)="imageDisplay()">Dodaj Zdjęcia</button>
+</div>
+<div *ngIf="developerDiv" class="developer_box">
+    <h1>Dodaj nowego Producenta</h1>
+    <form [formGroup]="developerForm" (ngSubmit)="addDeveloper()">
+        <div class="developer_form">
+            <h2>Nazwa Producenta</h2>
+            <mat-form-field appearance="fill" class="mat_form">
+                <input matInput formControlName="developerName" autocomplete="off">
+                <mat-error *ngIf="developerForm.controls.developerName.invalid">{{this.invalidDeveloperName}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="developer_form">
+            <h2>Miasto</h2>
+            <mat-form-field appearance="fill" class="mat_form">
+                <input matInput formControlName="headquartersCity" autocomplete="off">
+                <mat-error *ngIf="developerForm.controls.headquartersCity.invalid">{{this.invalidDeveloperHeadquartersCity}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="developer_form">
+            <h2>Kraj</h2>
+            <mat-form-field appearance="fill" class="mat_form">
+                <input matInput formControlName="headquartersCountry" autocomplete="off">
+                <mat-error *ngIf="developerForm.controls.headquartersCountry.invalid">{{this.invalidDeveloperHeadquartersCountry}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="developer_form">
+            <h2>Rok założenia</h2>
+            <mat-form-field appearance="fill" class="mat_form">
+                <input matInput formControlName="foundationYear" autocomplete="off">
+                <mat-error *ngIf="developerForm.controls.foundationYear.invalid">{{this.invalidDeveloperFoundationYear}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="developer_correct_response">
+            <h1>{{this.addDeveloperCorrectResponse}}</h1>
+        </div>
+        <div class="developer_error_response">
+            <h1>{{this.addDeveloperErrorResposne}}</h1>
+        </div>
+        <button class="developer_button">Dodaj Reżysera</button>
+    </form>
+</div>
+<div *ngIf="gameDiv" class="game_box">
+    <h1>Dodaj nowy Grę</h1>
+    <form [formGroup]="gameForm">
+        <div class="game_form">
+            <h2>Tytuł</h2>
+            <mat-form-field appearance="fill" class="mat_form">
+                <input matInput formControlName="title" autocomplete="off">
+                <mat-error *ngIf="gameForm.controls.title.invalid">{{this.invalidGameTitle}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="game_form">
+            <h2>Producent</h2>
+            <mat-form-field appearance="fill" class="mat_form">
+                <mat-select formControlName="developer" class="mat_select">
+                    <mat-option [value]="developer" *ngFor="let developer of developers" class="mat_option">{{developer.developerName}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="gameForm.controls.developer.invalid">{{this.invalidGameDeveloper}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="game_form_text_area">
+            <h2>Opis</h2>
+            <mat-form-field appearance="fill" class="mat_form_text_area">
+                <textarea matInput formControlName="description" autocomplete="off"></textarea>
+                <mat-error *ngIf="gameForm.controls.description.invalid">{{this.invalidGameDescription}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="game_form">
+            <h2>Data Wydania</h2>
+            <mat-form-field appearance="fill" class="mat_form">
+                <input matInput placeholder="2014-04-27" formControlName="releaseDate" autocomplete="off">
+                <mat-error *ngIf="gameForm.controls.releaseDate.invalid">{{this.invalidGameReleaseDate}}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="game_form">
+            <h2>Wydawca</h2>
+            <mat-form-field appearance="fill" class="mat_form">
+                <input matInput formControlName="publisher" autocomplete="off">
+                <mat-error *ngIf="gameForm.controls.publisher.invalid">{{this.invalidGamePublisher}}</mat-error>
+            </mat-form-field> 
+        </div>
+        <div class="game_form">
+            <h2>Kategorie</h2>
+            <mat-form-field appearance="fill" class="mat_form">
+                <mat-select class="mat_select" (selectionChange)="addCategory($event.value)">
+                    <mat-option *ngFor="let category of categories" [value]="category" class="mat_option">{{category}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="game_form">
+            <div *ngFor="let selectedCategory of selectedCategories" class="category_box">
+                <h3>{{selectedCategory}} <a class="remove_box" (click)="removeCategory(selectedCategory)"><fa-icon [icon]="faTimes"></fa-icon></a></h3>
+            </div>
+        </div>
+        <div class="game_correct_response">
+            <h1>{{this.addGameCorrectResponse}}</h1>
+        </div>
+        <div class="game_error_response">
+            <h1>{{this.addGameErrorResponse}}</h1>
+        </div>
+        <button (click)="addGame()" class="game_button">Dodaj Film</button>
+    </form>
+</div>
+<div *ngIf="imagesDiv" class="images_box">
+    <h1>Dodaj Zdjęcia</h1>
+    <div class="images_form">
+        <h2>Filmy</h2>
+        <mat-form-field appearance="fill" class="mat_form">
+            <mat-select class="mat_select" (selectionChange)="gameSelection($event.value)">
+                <mat-option [value]="game" *ngFor="let game of games" class="mat_option">{{game.title}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div *ngIf="gameIsSelected" class="images_input">
+        <h2>Plakat</h2>
+        <input id="imgInp" type="file" accept="image/*" (change)="onPosterSelected($event)">
+        <div class="image_box">
+            <img id="img" [src]="posterImage" *ngIf="selectedPoster" style="width: 240px; height: 360px">
+        </div>
+    </div>
+    <div *ngIf="gameIsSelected" class="images_input">
+        <h2>Tło</h2>
+        <input id="imgInp" type="file" accept="image/*" (change)="onBackgroundSelected($event)">
+        <div class="image_box">
+            <img id="img" [src]="backgroundImage" *ngIf="selectedBackground" style="width: 380px; height: 240px">
+        </div>
+    </div>
+    <div class="images_correct_response">
+        <h1>{{this.addImagesCorrectResponse}}</h1>
+    </div>
+    <div class="images_error_response">
+        <h1>{{this.addImagesErrorResponse}}</h1>
+    </div>
+    <button (click)="addImages()" class="images_button">Dodaj Zdjęcia</button>
+</div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { CategoryService } from 'src/app/_services/category.service';
 import { DirectorService } from 'src/app/_services/director.service';
 import { MovieService } from 'src/app/_services/movie.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
@@ -17,16 +18,12 @@ export class AddmovieComponent implements OnInit {
 
   directors!: any;
   movies!: any;
-  selectedDirector!: string;
-
-  categories = ['Akcja', 'Animacja', 'Biografia', 'Dokumentalny', 'Dramat', 'Fantasy', 'HackAndSlash', 'Horror', 'Komedia', 'MMO', 'Musical',
-                  'Przygodowy', 'Przyrodniczy', 'Romantyczny', 'RougeLike', 'RPG', 'SciFi', 'Strategia', 'Strzelanka', 'Thriller', 'Western', 'Wojenny'];
+  categories!: any;
 
   selectedCategories = new Array();
 
   directorForm!: FormGroup;
   movieForm!: FormGroup;
-  formGroupDirective!: FormGroupDirective;
 
   selectedPoster!: File;
   posterImage: any;
@@ -56,12 +53,9 @@ export class AddmovieComponent implements OnInit {
   invalidMovieDescription = "Proszę podać opis filmu!";
   invalidMovieReleaseDate = "Proszę podać datę premiery filmu!";
   invalidMovieLength = "Proszę podać długość filmu!";
-  invalidMovieCategory = "Proszę wybrać kategorię filmu!";
-  invalidMovieCategoryCheck = false;
 
   addImagesCorrectResponse = "";
   addImagesErrorResponse = "";
-  invalidImagesCheck = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -69,7 +63,8 @@ export class AddmovieComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private movieService: MovieService,
-    private directorService: DirectorService
+    private directorService: DirectorService,
+    private categoryService: CategoryService
   ) {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     this.directorForm = this.formBuilder.group({
@@ -88,6 +83,11 @@ export class AddmovieComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    if (this.isLoggedIn) {}
+    else {
+      this.router.navigate(['../login'], { relativeTo: this.route })
+    }
+
     this.directorService.getAll().subscribe(
       response => {
         this.directors = response;
@@ -100,10 +100,11 @@ export class AddmovieComponent implements OnInit {
       }
     )
 
-    if (this.isLoggedIn) {}
-    else {
-      this.router.navigate(['../login'], { relativeTo: this.route })
-    }
+    this.categoryService.getAll().subscribe(
+      response => {
+        this.categories = response;
+      }
+    )
   }
 
   get df() { return this.directorForm.controls; }
@@ -115,7 +116,7 @@ export class AddmovieComponent implements OnInit {
 
     this.directorService.addDirector(this.df.firstName.value, this.df.lastName.value, this.df.nationality.value).subscribe(
       response => {
-        this.addDirectorCorrectResponse = "Dodano nowego reżysera: " + this.df.firstName.value + " " + this.df.lastName.value;
+        this.addDirectorCorrectResponse = response.message;
         this.directorForm.reset();
         this.directorForm.controls.firstName.setErrors(null);
         this.directorForm.controls.lastName.setErrors(null);
@@ -134,15 +135,11 @@ export class AddmovieComponent implements OnInit {
 
   addMovie() {
     if (this.movieForm.invalid) { return; }
-    if (this.selectedCategories.length == 0) {
-      this.invalidMovieCategoryCheck = true;
-      return;
-    }
     this.clearMovie();
 
     this.movieService.addMovie(this.mf.director.value.directorId, this.mf.title.value, this.mf.description.value, this.mf.releaseDate.value, this.mf.length.value, this.selectedCategories).subscribe(
       response => {
-        this.addMovieCorrectResponse = "Dodano nowy film: " + this.mf.title.value;
+        this.addMovieCorrectResponse = response.message
         this.movieForm.reset();
         this.movieForm.controls.director.setErrors(null);
         this.movieForm.controls.title.setErrors(null);
@@ -150,6 +147,11 @@ export class AddmovieComponent implements OnInit {
         this.movieForm.controls.releaseDate.setErrors(null);
         this.movieForm.controls.length.setErrors(null);
         this.selectedCategories = [];
+        this.movieService.getAll().subscribe(
+          response => {
+            this.movies = response;
+          }
+        )
       },
       error => {
         this.addMovieErrorResponse = error.error.message;
@@ -221,18 +223,27 @@ export class AddmovieComponent implements OnInit {
   }
 
   directorDisplay() {
+    this.clearDirector();
+    this.clearMovie();
+    this.clearImages();
     this.directorDiv = true;
     this.movieDiv = false;
     this.imagesDiv = false;
   }
 
   movieDisplay() {
+    this.clearDirector();
+    this.clearMovie();
+    this.clearImages();
     this.directorDiv = false;
     this.movieDiv = true;
     this.imagesDiv = false;
   }
 
   imageDisplay() {
+    this.clearDirector();
+    this.clearMovie();
+    this.clearImages();
     this.directorDiv = false;
     this.movieDiv = false;
     this.imagesDiv = true;

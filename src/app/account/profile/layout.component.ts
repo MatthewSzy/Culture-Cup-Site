@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { UserService } from 'src/app/_services/user.service';
 
@@ -10,6 +11,8 @@ import { UserService } from 'src/app/_services/user.service';
     styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent {
+
+    faCircle = faCircle;
 
     isLoggedIn!: boolean;
     id!: string;
