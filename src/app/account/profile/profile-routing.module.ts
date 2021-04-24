@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddgameComponent } from './addgame/addgame.component';
+import { AddmovieComponent } from './addmovie/addmovie.component';
 import { DeleteComponent } from './delete/delete.component';
 import { EditComponent } from './edit/edit.component';
 import { InfoComponent } from './info/info.component';
@@ -16,6 +18,8 @@ const routes: Routes = [
             { path: 'photo', component: PhotoComponent },
             { path: 'delete', component: DeleteComponent },
             { path: 'userlist', component: UserlistComponent },
+            { path: 'addmovie', component: AddmovieComponent },
+            { path: 'addgame', component: AddgameComponent }
         ]
     }
 ];

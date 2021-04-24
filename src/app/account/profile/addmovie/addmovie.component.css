@@ -1,0 +1,299 @@
+.button_box {
+    text-align: center;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.route_button {
+    width: 30%;
+    font-size: 20px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: black;
+    background-color: rgb(255, 180, 20);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.route_button:hover {
+    background-color: rgb(255, 160, 0);
+    cursor: pointer;
+}
+
+.route_button:focus {
+    outline: 0;
+    cursor: pointer;
+}
+
+.director_box {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.director_box h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.director_form {
+    width: 45%;
+    margin-top: 10px;
+    vertical-align:top;
+    display: inline-block;
+}
+
+.director_form h2 {
+    text-align: center;
+    font-size: 25px;
+}
+
+.director_form input {
+    text-align: center;
+}
+
+.mat_form {
+    width: 98%;
+    font-size: 16px;
+}
+
+.mat-error {
+    text-align: center;
+    font-size: 18px;
+}
+
+.director_correct_response {
+    margin-top: 3vh;
+}
+
+.director_correct_response h1 {
+    text-align: center;
+    font-size: 20px;
+    color: green
+}
+
+.director_error_response {
+    margin-top: 3vh;
+}
+
+.director_error_response h1 {
+    text-align: center;
+    font-size: 20px;
+    color: red;
+}
+
+.director_button {
+    width: 70%;
+    font-size: 20px;
+    padding: 15px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5px;
+    color: black;
+    background-color: rgb(255, 180, 20);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.director_button:hover {
+    background-color: rgb(255, 160, 0);
+    cursor: pointer;
+}
+
+.director_button:focus {
+    outline: 0;
+    cursor: pointer;
+}
+
+.movie_box {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.movie_box h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.movie_form {
+    width: 45%;
+    margin-top: 10px;
+    vertical-align:top;
+    display: inline-block;
+}
+
+.movie_form h2 {
+    text-align: center;
+    font-size: 25px;
+}
+
+.movie_form input {
+    text-align: center;
+}
+
+.movie_form_text_area {
+    width: 100%;
+    margin-top: 10px;
+    vertical-align:top;
+}
+
+.movie_form_text_area h2 {
+    text-align: center;
+    font-size: 25px;
+}
+
+.mat_form_text_area {
+    text-align: center;
+    width: 89%;
+    font-size: 16px;
+}
+
+.mat_select {
+    text-align: center;
+    font-size: 16px;
+}
+
+.mat_option {
+    text-align: center;
+    font-size: 16px;
+}
+
+.category_box {
+    display: inline-block;
+    background-color: rgba(230, 230, 230, 1);
+    margin-top: 2px;
+    margin-right: 6px;
+    margin-left: 6px;
+    padding-top: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.remove_box {
+    color: rgb(102, 102, 102);
+    cursor: pointer;
+}
+
+.remove_box:hover {
+    color: black;
+}
+
+.movie_correct_response {
+    margin-top: 3vh;
+}
+
+.movie_correct_response h1 {
+    text-align: center;
+    font-size: 20px;
+    color: green
+}
+
+.movie_error_response {
+    margin-top: 3vh;
+}
+
+.movie_error_response h1 {
+    text-align: center;
+    font-size: 20px;
+    color: red;
+}
+
+.movie_button {
+    width: 70%;
+    font-size: 20px;
+    padding: 15px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5px;
+    color: black;
+    background-color: rgb(255, 180, 20);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.movie_button:hover {
+    background-color: rgb(255, 160, 0);
+    cursor: pointer;
+}
+
+.movie_button:focus {
+    outline: 0;
+    cursor: pointer;
+}
+
+.images_box {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.images_box h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.images_form h2 {
+    text-align: center;
+    font-size: 25px;
+}
+
+.images_input {
+    vertical-align: top;
+    display: inline-block;
+    width: 45%;
+}
+
+.image_box {
+    margin-top: 10px;
+}
+
+.images_correct_response {
+    margin-top: 3vh;
+}
+
+.images_correct_response h1 {
+    text-align: center;
+    font-size: 20px;
+    color: green
+}
+
+.images_error_response {
+    margin-top: 3vh;
+}
+
+.images_error_response h1 {
+    text-align: center;
+    font-size: 20px;
+    color: red;
+}
+
+.images_button {
+    width: 70%;
+    font-size: 20px;
+    padding: 15px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5px;
+    color: black;
+    background-color: rgb(255, 180, 20);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.images_button:hover {
+    background-color: rgb(255, 160, 0);
+    cursor: pointer;
+}
+
+.images_button:focus {
+    outline: 0;
+    cursor: pointer;
+}

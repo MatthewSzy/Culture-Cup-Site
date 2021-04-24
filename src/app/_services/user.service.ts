@@ -53,7 +53,7 @@ export class UserService {
   }
 
   getImage(id: string): Observable<any> {
-    return this.http.get(USER_API + `getImage/${id}`, httpOptions);
+    return this.http.get(USER_API + `getImage/${id}`);
   }
 
   delete(id: string): Observable<any> {

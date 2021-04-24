@@ -10,6 +10,7 @@ import { AccountRoutingModule } from './account-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { authInterceptorProviders } from '../_helpers/auth.interceptor';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const modules = [
     MatFormFieldModule,
@@ -27,7 +28,8 @@ const modules = [
         [...modules],
         CommonModule,
         ReactiveFormsModule,
-        AccountRoutingModule
+        AccountRoutingModule,
+        FontAwesomeModule
     ],
     exports: [
         [...modules],

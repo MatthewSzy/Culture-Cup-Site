@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faGamepad, faVideo } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  faVideo = faVideo;
+  faGamepad = faGamepad;
   
   constructor() {}
 

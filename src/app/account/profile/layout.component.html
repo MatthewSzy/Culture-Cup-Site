@@ -6,7 +6,7 @@
             <li><a routerLink="" routerLinkActive="active">GRY</a></li>
             <li *ngIf="!isLoggedIn" style="float:right"><a routerLink="/account/registration" routerLinkActive="active">Dołącz do nas</a></li>
             <li *ngIf="!isLoggedIn" style="float:right"><a routerLink="/account/login" routerLinkActive="active">Zaloguj się</a></li>
-            <li class="profile" *ngIf="isLoggedIn" style="float:right"><a><img *ngIf='profileImage' [src]='profileImage' width="37px" height="37px"><img *ngIf='!profileImage' src="\assets\images\usericon.png" width="37px" height="37px"> {{username}}</a>
+            <li class="profile" *ngIf="isLoggedIn" style="float:right"><a><img *ngIf='profileImage' [src]='profileImage' width="37px" height="37px"> {{username}}</a>
                 <ul>
                     <a routerLink="/account/profile" routerLinkActive="active">Profil</a>
                     <a routerLink="/library" routerLinkActive="active">Biblioteka</a>
@@ -21,14 +21,14 @@
             <div class="vertical_box">
                 <ul>
                     <h1>Profil Użytkownika</h1>
-                    <li><a routerLink="/account/profile/info" routerLinkActive="active">- Twoje Dane</a></li>
-                    <li><a routerLink="/account/profile/edit" routerLinkActive="active">- Edytuj Dane</a></li>
-                    <li><a routerLink="/account/profile/photo" routerLinkActive="active">- Zdjęcie Profilowe</a></li>
-                    <li><a routerLink="/account/profile/delete" routerLinkActive="active">- Usuń Konto</a></li>
+                    <li><a routerLink="/account/profile/info" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> Twoje Dane</a></li>
+                    <li><a routerLink="/account/profile/edit" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> Edytuj Dane</a></li>
+                    <li><a routerLink="/account/profile/photo" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> Zdjęcie Profilowe</a></li>
+                    <li><a routerLink="/account/profile/delete" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> Usuń Konto</a></li>
                     <h1 *ngIf="adminRole">Profil Administratora</h1>
-                    <li *ngIf="adminRole"><a routerLink="/account/profile/userlist" routerLinkActive="active">- Nadaj/Usuń Administratora</a></li>
-                    <!--<li *ngIf="adminRole"><a>- Dodaj Film</a></li>
-                    <li *ngIf="adminRole"><a>- Dodaj Grę</a></li>-->
+                    <li *ngIf="adminRole"><a routerLink="/account/profile/userlist" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> Nadaj/Usuń Administratora</a></li>
+                    <li *ngIf="adminRole"><a routerLink="/account/profile/addmovie" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> Dodaj Film</a></li>
+                    <li *ngIf="adminRole"><a routerLink="/account/profile/addgame" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> Dodaj Grę</a></li>
                 </ul>
             </div>
             <div class="data_box">
