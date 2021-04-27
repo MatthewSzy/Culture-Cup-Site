@@ -18,10 +18,10 @@ export class DirectorService {
     return this.http.get(DIRECTOR_API + 'get/all', httpOptions);
   }
 
-  addDirector(firstName: string, secondName: string, nationality: string): Observable<any> {
+  addDirector(firstName: string, lastName: string, nationality: string): Observable<any> {
     return this.http.post(DIRECTOR_API + 'add', {
       firstName,
-      secondName,
+      lastName,
       nationality
     }, httpOptions);
   }

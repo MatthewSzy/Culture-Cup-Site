@@ -1,0 +1,24 @@
+<div class="game_box">
+    <div class="background_box"><img [src]="backgroundImage"/></div>
+    <div class="grey-background"></div>
+    <div class="title_box">
+        <h5>&nbsp;</h5>
+        <h1>GRA</h1>
+        <h2>{{game.title}}</h2>
+        <h3>{{game.publisher}}</h3>
+        <h4><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{game.globalRating}}</h4>
+    </div>
+    <div class="main_box">
+        <div class="poster_box"><img [src]="posterImage" width="300" height="450"/></div>
+        <div class="info_box">
+            <h1>{{game.description}}</h1>
+            <h2 style="margin-top: 50px;">Producent: {{game.developer.developerName}}</h2>
+            <h2>Siedziba: {{game.developer.headquartersCountry + " / " + game.developer.headquartersCity}}</h2>
+            <h2>Premiera: {{game.releaseDate}}</h2>
+            <h2>Dodano na stronę: {{game.addingDate}}</h2>
+            <div *ngFor="let category of game.categories" class="category_box">
+                <h1>{{category.name}}</h1>
+            </div>
+        </div>
+    </div>
+</div>

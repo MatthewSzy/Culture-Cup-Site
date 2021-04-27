@@ -40,11 +40,11 @@
         <div class="developer_error_response">
             <h1>{{this.addDeveloperErrorResposne}}</h1>
         </div>
-        <button class="developer_button">Dodaj Reżysera</button>
+        <button class="developer_button">Dodaj Producenta</button>
     </form>
 </div>
 <div *ngIf="gameDiv" class="game_box">
-    <h1>Dodaj nowy Grę</h1>
+    <h1>Dodaj nową Grę</h1>
     <form [formGroup]="gameForm">
         <div class="game_form">
             <h2>Tytuł</h2>
@@ -102,13 +102,13 @@
         <div class="game_error_response">
             <h1>{{this.addGameErrorResponse}}</h1>
         </div>
-        <button (click)="addGame()" class="game_button">Dodaj Film</button>
+        <button (click)="addGame()" class="game_button">Dodaj Grę</button>
     </form>
 </div>
 <div *ngIf="imagesDiv" class="images_box">
     <h1>Dodaj Zdjęcia</h1>
     <div class="images_form">
-        <h2>Filmy</h2>
+        <h2>Gry</h2>
         <mat-form-field appearance="fill" class="mat_form">
             <mat-select class="mat_select" (selectionChange)="gameSelection($event.value)">
                 <mat-option [value]="game" *ngFor="let game of games" class="mat_option">{{game.title}}</mat-option>

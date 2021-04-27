@@ -17,6 +17,18 @@ export class MovieService {
   getAll(): Observable<any> {
     return this.http.get(MOVIE_API + 'get/all', httpOptions);
   }
+
+  getMovie(id: string): Observable<any> {
+    return this.http.get(MOVIE_API + `get/movie/${id}`, httpOptions);
+  }
+
+  getFourBestRatingMovie(): Observable<any> {
+    return this.http.get(MOVIE_API + 'get/fourBestRating', httpOptions);
+  }
+
+  getFourLastAddingMovie(): Observable<any> {
+    return this.http.get(MOVIE_API + 'get/fourLastAdding', httpOptions);
+  }
   
   addMovie(directorId: string, title: string, description: string, releaseDate: string, length: number, categories: string[]): Observable<any> {
     return this.http.post(MOVIE_API + 'add/movie', {

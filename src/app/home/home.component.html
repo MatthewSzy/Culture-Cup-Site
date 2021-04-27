@@ -8,5 +8,50 @@
             <h1><fa-icon [icon]="faVideo"></fa-icon>&nbsp;&nbsp;<fa-icon [icon]="faGamepad"></fa-icon></h1>
         </div>
     </div>
+    <div class="info_box">
+        <h1 style="color: white">TOP 4 FILMY</h1>
+        <div class="element_box" *ngFor="let fourBestRatingMovie of fourBestRatingMovies; let i = index" routerLink="movie/{{fourBestRatingMovie.movieId}}">
+            <div class="poster_box"><img [src]="fourBestRatingMoviesPoster[i]" width="300" height="450"/></div>
+            <h1>{{fourBestRatingMovie.title}}</h1>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{fourBestRatingMovie.globalRating}}</h2>
+        </div>
+    </div>
+    <div class="info_box">
+        <h1>TOP 4 GRY</h1>
+        <div class="element_box" *ngFor="let fourBestRatingGame of fourBestRatingGames; let i = index" routerLink="game/{{fourBestRatingGame.gameId}}">
+            <div class="poster_box"><img [src]="fourBestRatingGamesPoster[i]" width="300" height="450"/></div>
+            <h1>{{fourBestRatingGame.title}}</h1>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{fourBestRatingGame.globalRating}}</h2>
+        </div>
+    </div>
+    <div class="info_box">
+        <h1>OSTATNIO DODANE FILMY</h1>
+        <div class="element_box" *ngFor="let fourLastAddingMovie of fourLastAddingMovies; let i = index" routerLink="movie/{{fourLastAddingMovie.movieId}}">
+            <div class="poster_box"><img [src]="fourLastAddingMoviesPoster[i]" width="300" height="450"/></div>
+            <h1>{{fourLastAddingMovie.title}}</h1>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{fourLastAddingMovie.globalRating}}</h2>
+        </div>
+    </div>
+    <div class="info_box">
+        <h1>OSTATNIO DODANE GRY</h1>
+        <div class="element_box" *ngFor="let fourLastAddingGame of fourLastAddingGames; let i = index" routerLink="game/{{fourLastAddingGame.gameId}}">
+            <div class="poster_box"><img [src]="fourLastAddingGamesPoster[i]" width="300" height="450"/></div>
+            <h1>{{fourLastAddingGame.title}}</h1>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{fourLastAddingGame.globalRating}}</h2>
+        </div>
+    </div>
+    <div class="footer_box">
+        <div class="socialmedia_box">
+            <div class="icon_box"><fa-icon [icon]="faFacebook" style="color: rgb(66, 103, 178)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faSpotify" style="color: rgb(30, 215, 96)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faYoutube" style="color: rgb(255, 0, 0)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faTwitter" style="color: rgb(29, 161, 242)"></fa-icon></div>
+        </div>
+        <div class="copyright_box">
+            <h1>@Copyright 2020-2021.</h1>
+            <h1>All rights reserved. Powered by the Angular.</h1>
+        </div>
+        <div class="margin_box"></div>
+    </div>
 </div>
 
