@@ -18,6 +18,18 @@ export class GameService {
     return this.http.get(GAME_API + 'get/all', httpOptions);
   }
 
+  getGame(id: string): Observable<any> {
+    return this.http.get(GAME_API + `get/game/${id}`, httpOptions);
+  }
+
+  getFourBestRatingGame(): Observable<any> {
+    return this.http.get(GAME_API + 'get/fourBestRating', httpOptions);
+  }
+
+  getFourLastAddingGame(): Observable<any> {
+    return this.http.get(GAME_API + 'get/fourLastAdding', httpOptions);
+  }
+
   addGame(developerId: string, title: string, description: string, releaseDate: string, publisher: string, categories: string[]): Observable<any> {
     return this.http.post(GAME_API + 'add/game', {
       developerId,

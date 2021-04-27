@@ -1,0 +1,24 @@
+<div class="movie_box">
+    <div class="background_box"><img [src]="backgroundImage"/></div>
+    <div class="grey-background"></div>
+    <div class="title_box">
+        <h5>&nbsp;</h5>
+        <h1>FILM</h1>
+        <h2>{{movie.title}}</h2>
+        <h3>{{movie.length}} minut</h3>
+        <h4><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{movie.globalRating}}</h4>
+    </div>
+    <div class="main_box">
+        <div class="poster_box"><img [src]="posterImage" width="300" height="450"/></div>
+        <div class="info_box">
+            <h1>{{movie.description}}</h1>
+            <h2 style="margin-top: 50px;">Reżyser: {{movie.director.firstName + " " + movie.director.lastName}}</h2>
+            <h2>Pochodzenie: {{movie.director.nationality}}</h2>
+            <h2>Premiera: {{movie.releaseDate}}</h2>
+            <h2>Dodano na stronę: {{movie.addingDate}}</h2>
+            <div *ngFor="let category of movie.categories" class="category_box">
+                <h1>{{category.name}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
