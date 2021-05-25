@@ -9,7 +9,7 @@
             <li class="profile" *ngIf="isLoggedIn" style="float:right"><a><img *ngIf='profileImage' [src]='profileImage' width="37px" height="37px"> {{username}}</a>
                 <ul>
                     <a routerLink="/account/profile" routerLinkActive="active">Profil</a>
-                    <a routerLink="/library" routerLinkActive="active">Biblioteka</a>
+                    <a routerLink="/library/selection" routerLinkActive="active">Biblioteka</a>
                     <a (click)="logout()">Wyloguj się</a>
                 </ul>
             </li>

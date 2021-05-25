@@ -8,13 +8,12 @@
             <li *ngIf="!isLoggedIn" style="float:right"><a routerLink="/account/login" routerLinkActive="active">Zaloguj się</a></li>
             <li class="profile" *ngIf="isLoggedIn" style="float:right"><a><img *ngIf='profileImage' [src]='profileImage' width="37px" height="37px"> {{username}}</a>
                 <ul>
-                    <a class="profileElement" routerLink="/account/profile" routerLinkActive="active">Profil</a>
-                    <a class="profileElement" routerLink="/library/selection" routerLinkActive="active">Biblioteka</a>
-                    <a class="profileElement" (click)="logout()">Wyloguj się</a>
+                    <a routerLink="/account/profile" routerLinkActive="active">Profil</a>
+                    <a routerLink="/library/selection" routerLinkActive="active">Biblioteka</a>
+                    <a (click)="logout()">Wyloguj się</a>
                 </ul>
             </li>
         </ul>
     </nav>
+    <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>

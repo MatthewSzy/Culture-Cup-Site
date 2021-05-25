@@ -1,0 +1,34 @@
+<div class="yourmovies_box">
+    <div class="button_box">
+        <button class="display_button" (click)="displayToWatch()">Filmy do obejrzenia</button>
+        <button class="display_button" (click)="displayWatched()">Filmy obejrzane</button>
+    </div>
+    <div class="toWatch_box" *ngIf="toWatchDisplay">
+        <div class="element_box" *ngFor="let movieToWatch of moviesToWatch; let i = index" routerLink="../../movie/{{movieToWatch.movieId}}">
+            <div class="poster_box"><img [src]="displayMoviePoster(movieToWatch.posterImage)" width="240" height="350"/></div>
+            <h1>{{movieToWatch.title}}</h1>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{movieToWatch.globalRating}}</h2>
+        </div>
+    </div>
+    <div class="watched_box" *ngIf="watchedDisplay">
+        <div class="element_box" *ngFor="let movieWatched of moviesWatched; let i = index" routerLink="../../movie/{{movieWatched.movieId}}">
+            <div class="poster_box"><img [src]="displayMoviePoster(movieWatched.posterImage)" width="240" height="350"/></div>
+            <h1>{{movieWatched.title}}</h1>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{movieWatched.globalRating}}</h2>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{movieWatched.yourRating}}</h2>
+        </div>
+    </div>
+    <div class="footer_box">
+        <div class="socialmedia_box">
+            <div class="icon_box"><fa-icon [icon]="faFacebook" style="color: rgb(66, 103, 178)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faSpotify" style="color: rgb(30, 215, 96)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faYoutube" style="color: rgb(255, 0, 0)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faTwitter" style="color: rgb(29, 161, 242)"></fa-icon></div>
+        </div>
+        <div class="copyright_box">
+            <h1>@Copyright 2020-2021.</h1>
+            <h1 style="margin-bottom: 0px;">All rights reserved. Powered by the Angular.</h1>
+        </div>
+    </div>
+</div>
+

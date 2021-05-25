@@ -1,0 +1,78 @@
+.selection_box {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 10%;
+    text-align: center;
+}
+
+.selection_button {
+    width: 350px;
+    height: 350px;
+    padding: 15px;
+    color: black;
+    margin-left: 3%;
+    margin-right: 3%;
+    background-color: rgb(255, 180, 20);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.selection_button h1 {
+    font-size: 50px;
+}
+
+.selection_button:hover {
+    background-color: rgb(255, 160, 0);
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.selection_button:focus {
+    outline: 0;
+    cursor: pointer;
+}
+
+.icon_class {
+    font-size: 140px;
+    margin-bottom: 30px;
+}
+
+.footer_box {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: 200px;
+    background: linear-gradient(rgba(179, 46, 32, 0.0), rgba(179, 46, 32, 0.6));
+    transition: background-color 0.5s
+}
+
+.socialmedia_box {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.icon_box {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 30px;
+    font-size: 60px;
+}
+
+.icon_box:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.copyright_box {
+    text-align: center;
+}
+
+.copyright_box h1 {
+    font-size: 20px;
+    margin-bottom: -5px;
+}

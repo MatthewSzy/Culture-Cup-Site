@@ -94,7 +94,7 @@ export class AddmovieComponent implements OnInit {
       }
     )
 
-    this.movieService.getAll().subscribe(
+    this.movieService.getAllTitles().subscribe(
       response => {
         this.movies = response;
       }
@@ -147,7 +147,7 @@ export class AddmovieComponent implements OnInit {
         this.movieForm.controls.releaseDate.setErrors(null);
         this.movieForm.controls.length.setErrors(null);
         this.selectedCategories = [];
-        this.movieService.getAll().subscribe(
+        this.movieService.getAllTitles().subscribe(
           response => {
             this.movies = response;
           }

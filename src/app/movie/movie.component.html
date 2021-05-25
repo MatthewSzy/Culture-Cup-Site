@@ -20,5 +20,34 @@
                 <h1>{{category.name}}</h1>
             </div>
         </div>
+        <div class="library_box">
+            <div class="selected_rate_box">
+                <h1 *ngIf="hovered == 0">{{selected}}</h1>
+                <h1 *ngIf="hovered != 0">{{hovered}}</h1>
+            </div>
+            <div class="star_rating_box">
+                <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0">
+                    <ng-template let-fill="fill" let-index="index">
+                      <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+                    </ng-template>
+                </ngb-rating>
+            </div>
+            <button *ngIf="watched == false" (click)="addWatched()" class="movie_button">Obejrzałem</button>
+            <button *ngIf="watched == true" class="movie_button_disabled">Obejrzałem</button>
+            <button *ngIf="toWatch == false" (click)="addToWatch()" class="movie_button">Chcę obejrzeć</button>
+            <button *ngIf="toWatch == true" class="movie_button_disabled">Chcę obejrzeć</button>
+        </div>
+    </div>
+    <div class="footer_box">
+        <div class="socialmedia_box">
+            <div class="icon_box"><fa-icon [icon]="faFacebook" style="color: rgb(66, 103, 178)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faSpotify" style="color: rgb(30, 215, 96)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faYoutube" style="color: rgb(255, 0, 0)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faTwitter" style="color: rgb(29, 161, 242)"></fa-icon></div>
+        </div>
+        <div class="copyright_box">
+            <h1>@Copyright 2020-2021.</h1>
+            <h1  style="margin-bottom: 0px;">All rights reserved. Powered by the Angular.</h1>
+        </div>
     </div>
 </div>
