@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { faFacebook, faSpotify, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { MovieService } from '../_services/movie.service';
 import { TokenStorageService } from '../_services/token-storage.service';
@@ -13,6 +14,16 @@ import { TokenStorageService } from '../_services/token-storage.service';
 export class MovieComponent implements OnInit {
 
   faStar = faStar;
+  faFacebook = faFacebook;
+  faSpotify = faSpotify;
+  faTwitter = faTwitter;
+  faYoutube = faYoutube;
+
+  toWatch = false;
+  watched = false;
+
+  selected = 0;
+  hovered = 0;
 
   isLoggedIn!: boolean;
   userId!: string;
@@ -50,8 +61,36 @@ export class MovieComponent implements OnInit {
         let backgroundBytes = 'data:image/jpeg;base64,' + this.movie.backgroundImage;
         this.backgroundImage = this.sanitizer.bypassSecurityTrustUrl(backgroundBytes);
       },
+    )
+
+    this.movieService.getMovieWatchInfo(this.userId, this.movieId).subscribe(
+      response => {
+        this.toWatch = response.inToWatch;
+        this.watched = response.inWatched;
+        this.selected = response.movieRating;
+      }
+    )
+  }
+
+  addWatched() {
+    this.movieService.addMovieWatched(this.userId, this.movieId, this.selected).subscribe(
+      response => {
+        this.watched = true;
+        this.toWatch = true;
+      },
       error => {
-        this.router.navigate(['**'], { relativeTo: this.route })
+
+      }
+    )
+  }
+
+  addToWatch() {
+    this.movieService.addMovieToWatch(this.userId, this.movieId).subscribe(
+      response => {
+        this.toWatch = true;
+      },
+      error => {
+        
       }
     )
   }

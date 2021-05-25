@@ -96,7 +96,7 @@ export class AddgameComponent implements OnInit {
       }
     )
 
-    this.gameService.getAll().subscribe(
+    this.gameService.getAllTitles().subscribe(
       response => {
         this.games = response;
       }
@@ -150,7 +150,7 @@ export class AddgameComponent implements OnInit {
         this.gf.releaseDate.setErrors(null);
         this.gf.publisher.setErrors(null);
         this.selectedCategories = [];
-        this.gameService.getAll().subscribe(
+        this.gameService.getAllTitles().subscribe(
           response => {
             this.games = response;
           }

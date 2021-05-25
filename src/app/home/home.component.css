@@ -11,7 +11,7 @@
     position: absolute;
     z-index: -1 !important;
     width: 100%;
-    height: 50%;
+    height: 650px;
     animation: changeBackground 30s infinite;
     margin-top: -100px;
 }
