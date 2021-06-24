@@ -37,6 +37,10 @@ export class UserService {
     }, httpOptions);
   }
 
+  searching(): Observable<any> {
+    return this.http.get(USER_API + 'searching', httpOptions);
+  }
+
   update(id: string, username: string, email: string, password: string): Observable<any> {
     return this.http.put(USER_API + `update/${id}`, {
       username,

@@ -1,5 +1,25 @@
 <div class="horizontal_box">
     <nav class="menu_box">
+        <form class="form_box">
+            <mat-form-field class="field_box">
+                <mat-label class="field_label"><fa-icon [icon]="faSearch"></fa-icon>Szukaj</mat-label>
+                <input class="field_input" matInput aria-label="Element" [matAutocomplete]="auto" [formControl]="elementCtrl" #trigger="matAutocompleteTrigger">
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="resetValue($event.option.value, trigger, auto)">
+                    <mat-option class="option_box" *ngFor="let element of elementData | async" [value]="element.title">
+                        <div *ngIf="element.type == 'MOVIE'" class="element_box" routerLink="movie/{{element.id}}">
+                            <img [src]="displayPoster(element.posterImage)" width="80" height="120"/>
+                            <span>{{element.title}}</span> |
+                            <small>{{element.authorName}}</small> 
+                        </div>
+                        <div *ngIf="element.type == 'GAME'" class="element_box" routerLink="game/{{element.id}}">
+                            <img [src]="displayPoster(element.posterImage)" width="80" height="120"/>
+                            <span>{{element.title}}</span> |
+                            <small>{{element.authorName}}</small> 
+                        </div>
+                    </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+        </form>
         <ul>
             <li class="logo"><a routerLink="**" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"></a></li>
             <li><a routerLink="" routerLinkActive="active">FILMY</a></li>

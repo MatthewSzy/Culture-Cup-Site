@@ -4,14 +4,14 @@
         <button class="display_button" (click)="displayPlayed()">Gry rozegrane</button>
     </div>
     <div class="toPlay_box" *ngIf="toPlayDisplay">
-        <div class="element_box" *ngFor="let gameToPlay of gamesToPlay; let i = index" routerLink="../../game/{{gameToPlay.movieId}}">
+        <div class="element_box" *ngFor="let gameToPlay of gamesToPlay; let i = index" routerLink="../../game/{{gameToPlay.gameId}}">
             <div class="poster_box"><img [src]="displayGamePoster(gameToPlay.posterImage)" width="240" height="350"/></div>
             <h1>{{gameToPlay.title}}</h1>
             <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{gameToPlay.globalRating}}</h2>
         </div>
     </div>
     <div class="played_box" *ngIf="playedDisplay">
-        <div class="element_box" *ngFor="let gamePlayed of gamesPlayed; let i = index" routerLink="../../movie/{{gamePlayed.movieId}}">
+        <div class="element_box" *ngFor="let gamePlayed of gamesPlayed; let i = index" routerLink="../../game/{{gamePlayed.gameId}}">
             <div class="poster_box"><img [src]="displayGamePoster(gamePlayed.posterImage)" width="240" height="350"/></div>
             <h1>{{gamePlayed.title}}</h1>
             <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{gamePlayed.globalRating}}</h2>

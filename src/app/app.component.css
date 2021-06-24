@@ -13,6 +13,47 @@
     width: 50.1%;
 }
 
+.form_box {
+    position: absolute;
+    width: 35%;
+    margin-left: 136px;
+}
+
+.field_box {
+    width: 100%;
+}
+
+.field_label {
+    color: white;
+    font-size: 23px;
+}
+
+.field_input {
+    color: white;
+    font-size: 23px;
+}
+
+::ng-deep.mat-form-field-underline {
+    display: none;
+}
+
+.option_box {
+    height: 120px;
+    margin-top: 10px;
+}
+
+.element_box {
+    font-size: 18px;
+}
+
+.element_box span {
+    margin-left: 20px;
+}
+
+.element_box small {
+    font-size: 15px;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -95,4 +136,8 @@ li > ul a {
     margin-top: 10px;
     padding-left: 20px;
     background-color: rgba(179, 46, 32, 1);
+}
+
+.example::-webkit-scrollbar {
+    display: none;
 }
