@@ -1,0 +1,135 @@
+<div *ngIf="!loaded_game">
+    <div class="loading_box">
+        <div class="loading-ring">
+            <div></div><div></div><div></div><div></div>
+        </div>
+    </div> 
+    <div class="footer_box_not_loaded">
+        <div class="socialmedia_box">
+            <div class="icon_box_game"><fa-icon [icon]="faFacebook" style="color: rgb(66, 103, 178)"></fa-icon></div>
+            <div class="icon_box_game"><fa-icon [icon]="faYoutube" style="color: rgb(255, 0, 0)"></fa-icon></div>
+            <div class="icon_box_game"><fa-icon [icon]="faTwitter" style="color: rgb(29, 161, 242)"></fa-icon></div>
+        </div>
+        <div class="copyright_box">
+            <h1>@Copyright 2020-2021.</h1>
+            <h1 style="margin-bottom: 0px;">All rights reserved. Powered by the Angular.</h1>
+        </div>
+    </div>
+</div>
+<div *ngIf="loaded_game">
+    <div *ngIf="loaded_game" class="game_box">
+        <div class="background_box"><img [src]="backgroundImage"/></div>
+        <div class="grey-background"></div>
+        <div class="title_box">
+            <h5>&nbsp;</h5>
+            <h2>{{game.title}}</h2>
+            <h4><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{game.voteAverage | number:'1.1-1'}}</h4>
+            <h5><fa-icon [icon]="faEye" style="color: rgb(255, 200, 50);position: relative; top: 2px;"></fa-icon> {{game.voteCount | number}}</h5>
+        </div>
+        <div class="main_box">
+            <div class="poster_box_game"><img [src]="posterImage" width="280" height="400"/></div>
+            <div class="info_box">
+                <h2>{{'game.release_date' | translate}}</h2>
+                <div class="release_date_box" *ngFor="let releaseDate of game.releaseDates | keyvalue">
+                    <h3>{{displayDate(releaseDate.key)}}</h3>
+                    <h4 style="white-space:pre-line">{{displayAllPlatforms(releaseDate.value)}}</h4>
+                </div>
+                <h1>{{game.overview}}</h1>
+                <div>
+                    <div *ngFor="let category of game.categories" class="category_box">
+                        <h1>{{category}}</h1>
+                    </div> 
+                </div>
+            </div>
+            <div class="library_box">
+                <div class="buttons_box">
+                    <div class="button_box">
+                         <button (click)="addToPlay()" mat-fab color="accent" [disabled]="toPlay">
+                         <mat-icon class="mat-icon-game">bookmark</mat-icon>
+                         </button>
+                     </div>
+                     <div class="button_box">
+                         <button (click)="addPlayed()" mat-fab color="accent" [disabled]="played">
+                         <mat-icon class="mat-icon-game">check_circle</mat-icon>
+                         </button>
+                     </div>
+                     <div class="button_box">
+                         <button (click)="addToFavorite()" mat-fab color="accent" [disabled]="favorite">
+                         <mat-icon class="mat-icon-game">favorite</mat-icon>
+                         </button>
+                     </div> 
+                 </div>
+                <div class="more_info_box">
+                    <h2>{{'game.engine' | translate}} <h1> {{game.engine}}</h1></h2>
+                    <h2>{{'game.franchises' | translate}} <h1> {{game.franchises}}</h1></h2>
+                    <h2>{{'game.mods' | translate}} <h1> {{game.mods}}</h1></h2>
+                    <h2>{{'game.perspective' | translate}} <h1> {{game.perspective}}</h1></h2>
+                    <h2>{{'game.platforms'  | translate}}</h2>
+                    <ng-container>
+                        <div *ngFor="let platform of game.platforms">
+                            <li>{{platform}}</li>
+                        </div>
+                    </ng-container>
+                    <h2>{{'game.age_rating' | translate}}</h2>
+                    <div class="age_rating_box">
+                        <ng-container *ngIf="game.ageRating == 1">
+                            <img src="assets\images\icons\pegi3.png" width="70" height="90"/>
+                        </ng-container>
+                        <ng-container *ngIf="game.ageRating == 2">
+                            <img src="assets\images\icons\pegi7.png" width="70" height="90"/>
+                        </ng-container>
+                        <ng-container *ngIf="game.ageRating == 3">
+                            <img src="assets\images\icons\pegi12.png" width="70" height="90"/>
+                        </ng-container>
+                        <ng-container *ngIf="game.ageRating == 4">
+                            <img src="assets\images\icons\pegi16.png" width="70" height="90"/>
+                        </ng-container>
+                        <ng-container *ngIf="game.ageRating == 5 || game.ageRating == 11">
+                            <img src="assets\images\icons\pegi18.png" width="70" height="90"/>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="game.expansions != null" class="expansions_box">
+            <h1>{{'game.expansions' | translate}}</h1>
+            <div class="element" *ngFor="let expansion of game.expansions | keyvalue">
+                <img [src]="createImagePath(expansion.value)"  width="200" height="260">
+                <h1>{{expansion.key}}</h1>
+            </div>
+        </div>
+        <div class="comment_box">
+            <h2>{{'game.comments' | translate}}</h2>
+            <form [formGroup]="commentForm" class="comment_form">
+                <mat-form-field class="mat_form" appearance="outline">
+                    <textarea class="mat_text_area" matInput formControlName="commentInfo" autocomplete="off" placeholder="{{'game.leave_comment' | translate}}" maxlength="1000"></textarea>
+                    <mat-error class="mat_error" *ngIf="getCommentFormInvalid()">{{'game.empty_comment' | translate}}</mat-error>
+                </mat-form-field>
+                <button class="button_class" (click)="addComment()">{{'game.add_comment' | translate}}</button>
+                <button class="button_class" (click)="clearTextArea()">{{'game.clear_comment' | translate}}</button>
+            </form>
+            <div class="comment_element" *ngFor="let comment of comments">
+                <div class="right_box"><img [src]='convertImage(comment.profileImage)' width="100px" height="100px"></div>
+                <div class="left_box">
+                    <h1>{{comment.username}}  |  <h2>{{comment.addingDate}} &nbsp;&nbsp; {{comment.addingTime}}</h2><button *ngIf="checkComment(comment.username)" class="small_button" (click)="deleteComment(comment.commentId)">{{'game.delete_comment' | translate}}</button></h1>
+                    <h3>{{comment.info}}</h3>
+                </div>
+                <div class="likes_box">
+                    <button class="like_button" (click)="addLike(comment.commentId)">{{comment.likeNumber}} &nbsp;&nbsp;<fa-icon [icon]="faThumbsUp" style="color: rgb(51, 204, 51)"></fa-icon></button>
+                    <button class="like_button" (click)="addUnlike(comment.commentId)">{{comment.unlikeNumber}} &nbsp;&nbsp;<fa-icon [icon]="faThumbsDown" style="color: rgb(204, 0, 0)"></fa-icon></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer_box_loaded">
+            <div class="socialmedia_box">
+                <div class="icon_box_game"><fa-icon [icon]="faFacebook" style="color: rgb(66, 103, 178)"></fa-icon></div>
+                <div class="icon_box_game"><fa-icon [icon]="faYoutube" style="color: rgb(255, 0, 0)"></fa-icon></div>
+                <div class="icon_box_game"><fa-icon [icon]="faTwitter" style="color: rgb(29, 161, 242)"></fa-icon></div>
+            </div>
+            <div class="copyright_box">
+                <h1>@Copyright 2020-2021.</h1>
+                <h1  style="margin-bottom: 0px;">All rights reserved. Powered by the Angular.</h1>
+            </div>
+        </div>
+    </div>
+</div>

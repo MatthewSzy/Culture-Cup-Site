@@ -1,0 +1,73 @@
+.list_box h1 {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    font-style: italic;
+    text-align: center;
+    font-size: 30px;
+    width: 100%;
+    margin-top: 65px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid black;
+}
+
+.table_box {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.table_box th {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.table_box tr {
+    text-align: center;
+    font-size: 15px;
+}
+
+.table_box td {
+    text-align: center;
+}
+
+.button_class_list {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 15px;
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: black;
+    background-color: rgb(255, 180, 20);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.button_class_list:hover {
+    transform: scale(1.05);
+    background-color: rgb(255, 160, 0);
+    cursor: pointer;
+}
+
+.button_class_list:focus {
+    outline: 0;
+    cursor: pointer;
+}
+
+.button_class_list_block {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 15px;
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: black;
+    background-color: grey;
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor: default;
+}

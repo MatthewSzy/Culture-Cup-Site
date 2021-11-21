@@ -1,0 +1,24 @@
+<div class="main_box">
+    <div class="center_box">
+        <div class="vertical_box">
+            <ul>
+                <div class="profile_box"><a><img *ngIf='profileImage' [src]='profileImage' width="70px" height="70px"> &nbsp;{{username}}</a></div>
+                <h1>{{'profile.user_title' | translate}}</h1>
+                <li><a routerLink="/account/profile/edit" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> {{'profile.user_edit' | translate}}</a></li>
+                <li><a routerLink="/account/profile/photo" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> {{'profile.user_photo' | translate}}</a></li>
+                <li><a routerLink="/account/profile/delete" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> {{'profile.user_delete' | translate}}</a></li>
+                <h1 *ngIf="adminRole">{{'profile.admin_title' | translate}}</h1>
+                <li *ngIf="adminRole"><a routerLink="/account/profile/userlist" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> {{'profile.add_delete_admin' | translate}}</a></li>
+                <!--<li *ngIf="adminRole"><a routerLink="" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> {{'profile.add_movie' | translate}}</a></li>
+                <li *ngIf="adminRole"><a routerLink="" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> {{'profile.add_movie_images' | translate}}</a></li>
+                <li *ngIf="adminRole"><a routerLink="" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> {{'profile.modife_movie' | translate}}</a></li>
+                <li *ngIf="adminRole"><a routerLink="" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> {{'profile.add_game' | translate}}</a></li>
+                <li *ngIf="adminRole"><a routerLink="" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> {{'profile.add_game_images' | translate}}</a></li>
+                <li *ngIf="adminRole"><a routerLink="" routerLinkActive="active"><fa-icon [icon]="faCircle" class="icon_box"></fa-icon> {{'profile.modife_game' | translate}}</a></li>-->
+            </ul>
+        </div>
+        <div class="data_box">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

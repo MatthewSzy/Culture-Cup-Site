@@ -1,0 +1,138 @@
+<div *ngIf="!loaded_movie">
+    <div class="loading_box">
+        <div class="loading-ring">
+            <div></div><div></div><div></div><div></div>
+        </div>
+    </div> 
+    <div class="footer_box_not_loaded">
+        <div class="socialmedia_box">
+            <div class="icon_box_movie"><fa-icon [icon]="faFacebook" style="color: rgb(66, 103, 178)"></fa-icon></div>
+            <div class="icon_box_movie"><fa-icon [icon]="faYoutube" style="color: rgb(255, 0, 0)"></fa-icon></div>
+            <div class="icon_box_movie"><fa-icon [icon]="faTwitter" style="color: rgb(29, 161, 242)"></fa-icon></div>
+        </div>
+        <div class="copyright_box">
+            <h1>@Copyright 2020-2021.</h1>
+            <h1 style="margin-bottom: 0px;">All rights reserved. Powered by the Angular.</h1>
+        </div>
+    </div>
+</div>
+<div *ngIf="loaded_movie" class="movie_box">
+    <div *ngIf="movie" class="background_box"><img [src]="backgroundImage"/></div>
+    <div class="grey-background"></div>
+    <div *ngIf="movie" class="title_box">
+        <h5>&nbsp;</h5>
+        <h2 *ngIf="movie">{{movie.title}}</h2>
+        <h3 *ngIf="movie">{{movie.runtime}} {{'movie.minutes' | translate}}</h3>
+        <h4 *ngIf="movie"><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{movie.voteAverage | number:'1.1'}}</h4>
+        <h5 *ngIf="movie"><fa-icon [icon]="faEye" style="color: rgb(255, 200, 50);position: relative; top: 2px;"></fa-icon> {{movie.voteCount | number}}</h5>
+    </div>
+    <div class="main_box">
+        <div class="poster_box_movie"><img [src]="posterImage" width="280" height="400"/></div>
+        <div class="info_box">
+            <h2 *ngIf="movie">{{'movie.release_date' | translate}} {{movie.releaseDate}}</h2>
+            <h1 *ngIf="movie">{{movie.overview}}</h1>
+            <div *ngIf="movie">
+                <div *ngFor="let category of movie.categories" class="category_box">
+                    <h1>{{category}}</h1>
+                </div> 
+            </div>
+        </div>
+        <div class="library_box">
+            <div class="buttons_box">
+                <div class="button_box">
+                     <button (click)="addToWatch()" mat-fab color="accent" [disabled]="toWatch">
+                     <mat-icon class="mat-icon-movie">bookmark</mat-icon>
+                     </button>
+                 </div>
+                 <div class="button_box">
+                     <button (click)="addWatched()" mat-fab color="accent" [disabled]="watched">
+                     <mat-icon class="mat-icon-movie">check_circle</mat-icon>
+                     </button>
+                 </div>
+                 <div class="button_box">
+                     <button (click)="addToFavorite()" mat-fab color="accent" [disabled]="favorite">
+                     <mat-icon class="mat-icon-movie">favorite</mat-icon>
+                     </button>
+                 </div> 
+             </div>
+            <div class="more_info_box">
+                <ng-container *ngIf="movie">
+                   <h2 *ngIf="movie.status == 'Released'">{{'movie.status' | translate}} <h1> {{'movie.status_done' | translate}}</h1></h2>
+                    <h2 *ngIf="movie.status != 'Released'">{{'movie.status' | translate}} <h1> {{'movie.status_production' | translate}}</h1></h2> 
+                </ng-container>
+                <h2 *ngIf="movie">{{'movie.original_language' | translate}} <h1> {{getLanguage(movie.originalLanguage)}}</h1></h2>
+                <h2 *ngIf="movie">{{'movie.original_title' | translate}} <h1> {{movie.originalTitle}}</h1></h2>
+                <h2>{{'movie.production_countries'  | translate}}</h2>
+                <ng-container *ngIf="movie">
+                    <div *ngFor="let productionCountry of movie.productionCountries">
+                        <li>{{productionCountry}}</li> 
+                    </div>
+                </ng-container> 
+                <h2>{{'movie.production_companies'  | translate}}</h2>
+                <ng-container *ngIf="movie">
+                    <div *ngFor="let productionCompany of movie.productionCompanies | keyvalue">
+                        <li>{{productionCompany.value}}</li>
+                    </div>
+                </ng-container>
+                <h2 *ngIf="movie">{{'movie.budget' | translate}} <h1> {{movie.budget | number:'4.0'}}$</h1></h2>
+                <h2 *ngIf="movie">{{'movie.revenue' | translate}} <h1> {{movie.revenue | number:'4.0'}}$</h1></h2>
+                <h2 *ngIf="movie">{{'movie.home_page' | translate}} <a (click)="goToHomePage(movie.homePage)"><h1> {{movie.homePage}}</h1></a></h2>
+            </div>
+        </div>
+    </div>
+    <div class="cast_box">
+        <h1>{{'movie.cast' | translate}}</h1>
+        <cdk-virtual-scroll-viewport itemSize="cast.length" class="viewport">
+            <div *cdkVirtualFor="let actor of cast" class="element">
+                <img *ngIf="actor.profileImage != null" [src]="createActorImagePath(actor.profileImage)" width="150" height="190">
+                <img *ngIf="actor.profileImage == null" src="assets\images\icons\noProfileImage.svg" width="150" height="190">
+                <h1>{{actor.name}}</h1>
+                <h2>{{actor.character}}</h2>
+            </div>
+        </cdk-virtual-scroll-viewport>
+    </div>
+    <div class="cast_box">
+        <h1>{{'movie.crew' | translate}}</h1>
+        <cdk-virtual-scroll-viewport itemSize="crew.length" class="viewport">
+            <div *cdkVirtualFor="let person of crew" class="element">
+                <img *ngIf="person.profileImage != null" [src]="createActorImagePath(person.profileImage)" width="150" height="190">
+                <img *ngIf="person.profileImage == null" src="assets/images/icons/noProfileImage.svg" width="150" height="190">
+                <h1>{{person.name}}</h1>
+                <h2>{{person.department}}</h2>
+            </div>
+        </cdk-virtual-scroll-viewport>
+    </div>
+    <div class="comment_box">
+        <h2>{{'movie.comments' | translate}}</h2>
+        <form [formGroup]="commentForm" class="comment_form">
+            <mat-form-field class="mat_form" appearance="outline">
+                <textarea class="mat_text_area" matInput formControlName="commentInfo" autocomplete="off" placeholder="{{'movie.leave_comment' | translate}}" maxlength="1000"></textarea>
+                <mat-error class="mat_error" *ngIf="invalidComment == 'Empty Comment!'">{{'movie.empty_comment' | translate}}</mat-error>
+            </mat-form-field>
+            <button class="button_class" (click)="addComment()">{{'movie.add_comment' | translate}}</button>
+            <button class="button_class" (click)="clearTextArea()">{{'movie.clear_comment' | translate}}</button>
+        </form>
+        <div class="comment_element" *ngFor="let comment of comments">
+            <div class="right_box"><img [src]='convertImage(comment.profileImage)' width="100px" height="100px"></div>
+            <div class="left_box">
+                <h1>{{comment.username}}  |  <h2>{{comment.addingDate}} &nbsp;&nbsp; {{comment.addingTime}}</h2><button *ngIf="checkComment(comment.username)" class="small_button" (click)="deleteComment(comment.commentId)">{{'movie.delete_comment' | translate}}</button></h1>
+                <h3>{{comment.info}}</h3>
+            </div>
+            <div class="likes_box">
+                <button class="like_button" (click)="addLike(comment.commentId)">{{comment.likeNumber}} &nbsp;&nbsp;<fa-icon [icon]="faThumbsUp" style="color: rgb(51, 204, 51)"></fa-icon></button>
+                <button class="like_button" (click)="addUnlike(comment.commentId)">{{comment.unlikeNumber}} &nbsp;&nbsp;<fa-icon [icon]="faThumbsDown" style="color: rgb(204, 0, 0)"></fa-icon></button>
+            </div>
+        </div>
+    </div>
+    <div class="footer_box_loaded">
+        <div class="socialmedia_box">
+            <div class="icon_box_movie"><fa-icon [icon]="faFacebook" style="color: rgb(66, 103, 178)"></fa-icon></div>
+            <div class="icon_box_movie"><fa-icon [icon]="faYoutube" style="color: rgb(255, 0, 0)"></fa-icon></div>
+            <div class="icon_box_movie"><fa-icon [icon]="faTwitter" style="color: rgb(29, 161, 242)"></fa-icon></div>
+        </div>
+        <div class="copyright_box">
+            <h1>@Copyright 2020-2021.</h1>
+            <h1  style="margin-bottom: 0px;">All rights reserved. Powered by the Angular.</h1>
+        </div>
+    </div>
+</div>

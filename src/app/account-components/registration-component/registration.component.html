@@ -1,0 +1,57 @@
+<div class="main_box">
+    <div class="color_box">
+        <div class="center_box">
+            <div class="form_box">
+                <p>{{'registration.title' | translate}}</p>
+                <form [formGroup]="registrationForm" (ngSubmit)="registration()">
+                    <div class="form_group">
+                        <mat-form-field appearance="outline" class="mat_form">
+                            <mat-label class="form_label">{{'registration.username_placeholder' | translate}}</mat-label>
+                            <input matInput formControlName="username" autocomplete="off" spellcheck="false">
+                            <mat-error *ngIf="invalidUsername == 'Empty Username!'">{{'registration.username_empty' | translate}}</mat-error>
+                            <mat-error *ngIf="invalidUsername == 'Exist Username!'">{{'registration.username_exist' | translate}}</mat-error>
+                            <mat-error *ngIf="invalidUsername == 'Wrong Username!'">{{'registration.username_wrong' | translate}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="form_group">
+                        <mat-form-field appearance="outline" class="mat_form">
+                            <mat-label class="form_label">{{'registration.email_placeholder' | translate}}</mat-label>
+                            <input matInput formControlName="email" autocomplete="off" spellcheck="false">
+                            <mat-error *ngIf="invalidEmail == 'Empty Email!'">{{'registration.email_empty' | translate}}</mat-error>
+                            <mat-error *ngIf="invalidEmail == 'Exist Email!'">{{'registration.email_exist' | translate}}</mat-error>
+                            <mat-error *ngIf="invalidEmail == 'Wrong Email!'">{{'registration.email_wrong' | translate}}</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="form_group">
+                        <mat-form-field appearance="outline" class="mat_form">
+                            <mat-label class="form_label">{{'registration.password_placeholder' | translate}}</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="off" spellcheck="false">
+                            <button class="hide_button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="invalidPassword == 'Empty Password!'">{{'registration.password_empty' | translate}}</mat-error>
+                            <mat-error *ngIf="invalidPassword == 'Wrong Password!'">{{'registration.password_wrong' | translate}}</mat-error>
+                        </mat-form-field>
+                    </div>  
+                    <div class="form_group">
+                        <mat-form-field appearance="outline" class="mat_form">
+                            <mat-label class="form_label">{{'registration.second_password_placeholder' | translate}}</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="repeatPassword" autocomplete="off" spellcheck="false">
+                            <button class="hide_button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="invalidRepeatPassword == 'Empty RepeatPassword!'">{{'registration.second_password_empty' | translate}}</mat-error>
+                            <mat-error *ngIf="invalidRepeatPassword == 'Wrong RepeatPassword!'">{{'registration.second_password_wrong' | translate}}</mat-error>
+                        </mat-form-field>
+                    </div>   
+                    <button class="button_class">
+                        {{'registration.registration' | translate}}
+                    </button>
+                    <button routerLink="../login" class="button_class">
+                        {{'registration.login' | translate}}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

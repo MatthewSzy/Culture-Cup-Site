@@ -1,0 +1,50 @@
+<div *ngIf="!loaded">
+    <div class="loading_box">
+        <div class="loading-ring">
+            <div></div><div></div><div></div><div></div>
+        </div>
+    </div> 
+    <div class="footer_box_not_loaded">
+        <div class="socialmedia_box">
+            <div class="icon_box"><fa-icon [icon]="faFacebook" style="color: rgb(66, 103, 178)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faYoutube" style="color: rgb(255, 0, 0)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faTwitter" style="color: rgb(29, 161, 242)"></fa-icon></div>
+        </div>
+        <div class="copyright_box">
+            <h1>@Copyright 2020-2021.</h1>
+            <h1 style="margin-bottom: 0px;">All rights reserved. Powered by the Angular.</h1>
+        </div>
+    </div>
+</div>
+<div *ngIf="loaded">
+    <div *ngIf="loaded" class="games_box">
+        <div class="element_box" *ngFor="let game of games; let i = index" routerLink="../game/{{game.gameId}}">
+            <div class="poster_box"><img alr [src]="createImagePath(game.posterImageURL)" width="200" height="280"/></div>
+            <h1>{{game.title}}</h1>
+            <h3>{{game.releaseDate | slice:0:4}}</h3>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{game.voteAverage | number:'1.1-1'}}</h2>
+            <h4 *ngIf="game"><fa-icon [icon]="faEye" style="color: rgb(255, 200, 50);position: relative;"></fa-icon> {{game.voteCount | number}}</h4>
+        </div>
+        <div class="pagination_box">
+            <mat-paginator  (page)="handlePageEvent($event)"
+                            [length]="length"
+                            [pageSize]="pageSize"
+                            [pageIndex]="pageIndex"
+                            [hidePageSize]="true"
+                            [showFirstLastButtons]="true">
+            </mat-paginator>
+            <div class="page_box">{{actualPage}} / 100</div>
+        </div>
+    </div>
+    <div class="footer_box_loaded">
+        <div class="socialmedia_box">
+            <div class="icon_box"><fa-icon [icon]="faFacebook" style="color: rgb(66, 103, 178)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faYoutube" style="color: rgb(255, 0, 0)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faTwitter" style="color: rgb(29, 161, 242)"></fa-icon></div>
+        </div>
+        <div class="copyright_box">
+            <h1>@Copyright 2020-2021.</h1>
+            <h1 style="margin-bottom: 0px;">All rights reserved. Powered by the Angular.</h1>
+        </div>
+    </div>
+</div>

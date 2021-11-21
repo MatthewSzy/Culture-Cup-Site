@@ -1,0 +1,72 @@
+<div class="home_box">
+    <div class="background_box">
+        <img src="assets\images\background\BladeRunner.jpg"/>
+        <img src="assets\images\background\GodOfWar.jpg"/>
+        <img src="assets\images\background\TheSuicideSquad.jpg"/> 
+        <img src="assets\images\background\AssassinsCreedValhalla.jpg"/>
+        <img src="assets\images\background\StarWars.jpg"/>
+    </div>
+    <div class="grey_box">
+        <div class="info_box_home">
+            <h1>CULTURE CUP</h1>
+            <h2>{{'home.main' | translate}}</h2>
+            <h3>{{'home.under' | translate}}</h3>
+        </div>
+    </div>
+    <div class="data_box_first" style="margin-top: 510px;">
+        <div class="full_box">
+            <h1 style="color: white;">{{'home.top_movies' | translate}}</h1>
+            <div class="element_box" *ngFor="let fourBestRatingMovie of fourBestRatingMovies; let i = index" routerLink="movie/{{fourBestRatingMovie.movieId}}">
+                <div class="poster_box"><img [src]="createImagePathMovie(fourBestRatingMovie.posterImage)" width="220" height="310"/></div>
+                <h1 style="color: black;">{{fourBestRatingMovie.title}}</h1>
+                <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{fourBestRatingMovie.voteAverage | number:'1.1'}}</h2>
+                <h4><fa-icon [icon]="faEye" style="color: rgb(255, 200, 50);position: relative;"></fa-icon> {{fourBestRatingMovie.voteCount | number}}</h4>
+            </div> 
+        </div>
+    </div>
+    <div class="data_box">
+        <div class="full_box">
+            <h1>{{'home.recommended_movies' | translate}}</h1>
+            <div class="element_box" *ngFor="let fourPopularMovie of fourPopularMovies; let i = index" routerLink="movie/{{fourPopularMovie.movieId}}">
+                <div class="poster_box"><img [src]="createImagePathMovie(fourPopularMovie.posterImage)" width="220" height="310"/></div>
+                <h1>{{fourPopularMovie.title}}</h1>
+                <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{fourPopularMovie.voteAverage | number:'1.1'}}</h2>
+                <h4><fa-icon [icon]="faEye" style="color: rgb(255, 200, 50);position: relative;"></fa-icon> {{fourPopularMovie.voteCount | number}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="data_box">
+        <div class="full_box">
+            <h1>{{'home.top_games' | translate}}</h1>
+            <div class="element_box" *ngFor="let fourBestRatingGame of fourBestRatingGames; let i = index" routerLink="game/{{fourBestRatingGame.gameId}}">
+                <div class="poster_box"><img [src]="createImagePathGame(fourBestRatingGame.posterImageURL)" width="220" height="310"/></div>
+                <h1>{{fourBestRatingGame.title}}</h1>
+                <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{fourBestRatingGame.voteAverage | number:'1.1'}}</h2>
+                <h4><fa-icon [icon]="faEye" style="color: rgb(255, 200, 50);position: relative;"></fa-icon> {{fourBestRatingGame.voteCount | number}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="data_box">
+        <div class="full_box">
+            <h1>{{'home.recommended_games' | translate}}</h1>
+            <div class="element_box" *ngFor="let fourPopularGame of fourPopularGames; let i = index" routerLink="game/{{fourPopularGame.gameId}}">
+                <div class="poster_box"><img [src]="createImagePathGame(fourPopularGame.posterImageURL)" width="220" height="310"/></div>
+                <h1>{{fourPopularGame.title}}</h1>
+                <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{fourPopularGame.voteAverage | number:'1.1'}}</h2>
+                <h4><fa-icon [icon]="faEye" style="color: rgb(255, 200, 50);position: relative;"></fa-icon> {{fourPopularGame.voteCount | number}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="footer_box">
+        <div class="socialmedia_box">
+            <div class="icon_box"><fa-icon [icon]="faFacebook" style="color: rgb(66, 103, 178)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faYoutube" style="color: rgb(255, 0, 0)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faTwitter" style="color: rgb(29, 161, 242)"></fa-icon></div>
+        </div>
+        <div class="copyright_box">
+            <h1>@Copyright 2020-2021.</h1>
+            <h1>All rights reserved. Powered by the Angular.</h1>
+        </div>
+        <div class="margin_box"></div>
+    </div>
+</div>

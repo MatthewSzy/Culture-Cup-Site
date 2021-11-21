@@ -1,0 +1,147 @@
+.yourmovies_box {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    margin-top: 1%;
+    text-align: center;
+}
+
+.button_box_library {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.display_button {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    width: 300px;
+    font-size: 20px;
+    padding: 15px;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: black;
+    background-color: rgb(255, 180, 20);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.display_button:hover {
+    background-color: rgb(255, 160, 0);
+    cursor: pointer;
+}
+
+.display_button:focus {
+    outline: 0;
+    cursor: pointer;
+}
+
+.mat-icon-library {
+    position: relative;
+    top: 4px;
+}
+
+.movies_box {
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.poster_box_library img {
+    border-radius: 10px;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
+}
+
+.element_box {
+    text-align: center;
+    vertical-align: top;
+    width: 200px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.element_box h1 {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    color: black;
+    font-size: 18px;
+    font-weight: normal;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.element_box h2 {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    display: inline-block;
+    font-size: 23px;
+    margin-top: -5px;
+    margin-bottom: 0px;
+}
+
+.element_box h4 {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 17px;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+.element_box:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.footer_box_loaded {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: 200px;
+    background: linear-gradient(rgba(179, 46, 32, 0.0), rgba(179, 0, 0, 0.8));
+    transition: background-color 0.5s
+}
+
+.footer_box_not_loaded {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    margin-top: 50px;
+    background: linear-gradient(rgba(179, 46, 32, 0.0), rgba(179, 0, 0, 0.8));
+    transition: background-color 0.5s
+}
+
+.socialmedia_box {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.icon_box {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 30px;
+    font-size: 60px;
+}
+
+.icon_box:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.copyright_box {
+    text-align: center;
+}
+
+.copyright_box h1 {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: -5px;
+}

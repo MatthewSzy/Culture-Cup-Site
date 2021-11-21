@@ -1,0 +1,11 @@
+<div class="photo_box">
+    <h1>{{'profile.photo_info' | translate}}</h1>
+    <input lang="en-GB" type="file" accept="image/*" (change)="onFileSelected($event)">
+    <h2 *ngIf="invalidPrint">{{'profile.photo_error' | translate}}</h2>
+</div>
+<div class="image_box">
+    <img [src]="image" *ngIf="selectedFile" style="width: 400px; height: 400px">
+</div>
+<button class="photo_button" (click)="uploadPhoto()">
+    {{'profile.photo_upload' | translate}}
+</button>

@@ -1,0 +1,61 @@
+.photo_box {
+    margin-top: 65px;
+    text-align: center;
+}
+
+.photo_box h1 {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    font-style: italic;
+    text-align: center;
+    font-size: 40px;
+}
+
+.photo_box h2 {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.photo_box input {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    margin: auto;
+    margin-top: 40px;
+    margin-left: 120px;
+    font-size: 20px;
+}
+
+.image_box {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.photo_button {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    width: 60%;
+    font-size: 20px;
+    padding: 15px;
+    margin-top: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+    color: black;
+    background-color: rgb(255, 180, 20);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.photo_button:hover {
+    transform: scale(1.1);
+    background-color: rgb(255, 160, 0);
+    cursor: pointer;
+}
+
+.photo_button:focus {
+    outline: 0;
+    cursor: pointer;
+}

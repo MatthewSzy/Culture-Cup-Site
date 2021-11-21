@@ -1,0 +1,22 @@
+<div class="selection_box">
+    <button class="selection_button" routerLink="/library/yourmovies">
+        <div class="icon_class"><fa-icon [icon]="faVideo"></fa-icon></div>
+        <h1>{{'selection.your_movies' | translate}}</h1>
+    </button>
+    <button class="selection_button" routerLink="/library/yourgames">
+        <div class="icon_class"><fa-icon [icon]="faGamepad"></fa-icon></div>
+        <h1>{{'selection.your_games' | translate}}</h1>
+    </button>
+</div>
+<div class="footer_box">
+    <div class="socialmedia_box">
+        <div class="icon_box"><fa-icon [icon]="faFacebook" style="color: rgb(66, 103, 178)"></fa-icon></div>
+        <div class="icon_box"><fa-icon [icon]="faSpotify" style="color: rgb(30, 215, 96)"></fa-icon></div>
+        <div class="icon_box"><fa-icon [icon]="faYoutube" style="color: rgb(255, 0, 0)"></fa-icon></div>
+        <div class="icon_box"><fa-icon [icon]="faTwitter" style="color: rgb(29, 161, 242)"></fa-icon></div>
+    </div>
+    <div class="copyright_box">
+        <h1>@Copyright 2020-2021.</h1>
+        <h1 style="margin-bottom: 0px;">All rights reserved. Powered by the Angular.</h1>
+    </div>
+</div>

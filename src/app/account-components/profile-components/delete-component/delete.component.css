@@ -1,0 +1,83 @@
+.delete_box h1 {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    text-align: center;
+    font-style: italic;
+    font-size: 40px;
+    margin-top: 65px;
+}
+
+.form_group {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.form_group input {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.mat_form {
+    width: 80%;
+}
+
+.mat-error {
+    font-size: 20px;
+    text-align: center;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    color: rgb(255, 180, 20) !important;
+}
+  
+::ng-deep.mat-form-field-underline {
+    background-color: rgb(255, 180, 20) !important;
+} 
+  
+::ng-deep.mat-form-field-ripple {
+    background-color: rgb(255, 180, 20) !important;;
+}
+
+.hide_button {
+    background-color: rgba(0, 0 ,0 ,0);
+    font-size: 20px;
+    border: 0;
+    cursor: pointer;
+}
+
+.hide_button:focus {
+    outline: 0;
+    cursor: pointer;
+}
+
+.delete_button {
+    font-family: 'Titillium Web', sans-serif !important;
+    font-weight: 600 !important;
+    width: 60%;
+    font-size: 20px;
+    padding: 15px;
+    margin-top: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+    color: black;
+    background-color: rgb(255, 180, 20);
+    border: 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.delete_button:hover {
+    transform: scale(1.1);
+    background-color: rgb(255, 160, 0);
+    cursor: pointer;
+}
+
+.delete_button:focus {
+    outline: 0;
+    cursor: pointer;
+}

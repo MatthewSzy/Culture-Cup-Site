@@ -1,0 +1,36 @@
+<div class="main_box">
+    <div class="color_box">
+        <div class="center_box">
+            <div class="form_box">
+                <p>{{'login.title' | translate}}</p>
+                <form [formGroup]="loginForm" (ngSubmit)="login()">
+                    <div class="form_group">
+                        <mat-form-field appearance="outline" class="mat_form">
+                            <mat-label class="form_label">{{'login.username_placeholder' | translate}}</mat-label>
+                            <input matInput formControlName="username" autocomplete="off" spellcheck="false">
+                            <mat-error *ngIf="invalidUsername == 'Empty Username!'">{{'login.username_empty' | translate}}</mat-error>
+                            <mat-error *ngIf="invalidUsername == 'Wrong Username!'">{{'login.username_wrong' | translate}}</mat-error>
+                         </mat-form-field>
+                    </div>
+                    <div class="form_group">
+                        <mat-form-field appearance="outline" class="mat_form">
+                            <mat-label class="form_label">{{'login.password_placeholder' | translate}}</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="off" spellcheck="false">
+                            <button class="hide_button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="invalidPassword == 'Empty Password!'">{{'login.password_empty' | translate}}</mat-error>
+                            <mat-error *ngIf="invalidPassword == 'Wrong Password!'">{{'login.password_wrong' | translate}}</mat-error> 
+                        </mat-form-field>
+                    </div>    
+                    <button class="button_class">
+                        {{'login.login' | translate}}
+                    </button>
+                    <button routerLink="../registration" class="button_class">
+                        {{'login.registration' | translate}}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

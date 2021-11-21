@@ -1,0 +1,48 @@
+<div class="list_box">
+    <h1>{{'userlist.users' | translate}}</h1>
+    <table class="table_box">
+        <thead>
+            <tr>
+                <th style="width: 25%">{{'userlist.username' | translate}}</th>
+                <th style="width: 45%">{{'userlist.email' | translate}}</th>
+                <th style="width: 30%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td style="width: 25%" *ngIf="user.roles[0] != 'ROLE_ADMIN' && user.roles[1] != 'ROLE_ADMIN'">{{user.username}}</td>
+                <td style="width: 45%" *ngIf="user.roles[0] != 'ROLE_ADMIN' && user.roles[1] != 'ROLE_ADMIN'">{{user.email}}</td>
+                <td style="width: 30%" *ngIf="user.roles[0] != 'ROLE_ADMIN' && user.roles[1] != 'ROLE_ADMIN'">
+                    <button (click)="addAdmin(user.userId)" class="button_class_list">
+                        {{'userlist.add_admin' | translate}}
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>{{'userlist.admins' | translate}}</h1>
+    <table class="table_box">
+        <thead>
+            <tr>
+                <th style="width: 25%">{{'userlist.username' | translate}}</th>
+                <th style="width: 45%">{{'userlist.email' | translate}}</th>
+                <th style="width: 30%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td style="width: 25%" *ngIf="user.roles[0] == 'ROLE_ADMIN' || user.roles[1] == 'ROLE_ADMIN'">{{user.username}}</td>
+                <td style="width: 45%" *ngIf="user.roles[0] == 'ROLE_ADMIN' || user.roles[1] == 'ROLE_ADMIN'">{{user.email}}</td>
+                <td style="width: 30%" *ngIf="(user.roles[0] == 'ROLE_ADMIN' || user.roles[1] == 'ROLE_ADMIN')">
+                    <button (click)="deleteAdmin(user.userId)" class="button_class_list" *ngIf="username != user.username">
+                        {{'userlist.delete_admin' | translate}}
+                    </button>
+                    <button class="button_class_list_block" *ngIf="username == user.username">
+                        {{'userlist.delete_admin' | translate}}
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
