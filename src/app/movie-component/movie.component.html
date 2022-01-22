@@ -115,7 +115,7 @@
         <div class="comment_element" *ngFor="let comment of comments">
             <div class="right_box"><img [src]='convertImage(comment.profileImage)' width="100px" height="100px"></div>
             <div class="left_box">
-                <h1>{{comment.username}}  |  <h2>{{comment.addingDate}} &nbsp;&nbsp; {{comment.addingTime}}</h2><button *ngIf="checkComment(comment.username)" class="small_button" (click)="deleteComment(comment.commentId)">{{'movie.delete_comment' | translate}}</button></h1>
+                <h1><a routerLink="/library/user-selection/{{comment.username}}" routerLinkActive="active">{{comment.username}}</a>  |  <h2>{{comment.addingDate}} &nbsp;&nbsp; {{comment.addingTime}}</h2><button *ngIf="checkComment(comment.username)" class="small_button" (click)="deleteComment(comment.commentId)">{{'movie.delete_comment' | translate}}</button></h1>
                 <h3>{{comment.info}}</h3>
             </div>
             <div class="likes_box">

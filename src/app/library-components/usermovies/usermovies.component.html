@@ -1,0 +1,44 @@
+<div class="yourmovies_box">
+    <div class="user_library">BIBLIOTEKA UŻYTKOWNIKA: {{username}}</div>
+    <div class="button_box_library">
+        <button class="display_button" (click)="displayToWatch()" [disabled]="toWatchDisplay"><mat-icon class="mat-icon-library">bookmark</mat-icon> {{'your_movies.to_watch' | translate}}</button>
+        <button class="display_button" (click)="displayWatched()" [disabled]="watchedDisplay"><mat-icon class="mat-icon-library">check_circle</mat-icon> {{'your_movies.watched' | translate}}</button>
+        <button class="display_button" (click)="displayFavorite()"[disabled]="favoriteDisplay"><mat-icon class="mat-icon-library">favorite</mat-icon> {{'your_movies.favorite' | translate}}</button>
+    </div>
+    <div class="movies_box" *ngIf="toWatchDisplay">
+        <div class="element_box" *ngFor="let movieToWatch of moviesToWatch; let i = index" routerLink="../../../movie/{{movieToWatch.movieId}}">
+            <div class="poster_box_library"><img [src]="createImagePath(movieToWatch.posterImage)" width="200" height="300"/></div>
+            <h1>{{movieToWatch.title}}</h1>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{movieToWatch.voteAverage}}</h2>
+            <h4><fa-icon [icon]="faEye" style="color: rgb(255, 200, 50);position: relative;"></fa-icon> {{movieToWatch.voteCount | number}}</h4>
+        </div>
+    </div>
+    <div class="movies_box" *ngIf="watchedDisplay">
+        <div class="element_box" *ngFor="let movieWatched of moviesWatched; let i = index" routerLink="../../../movie/{{movieWatched.movieId}}">
+            <div class="poster_box_library"><img [src]="createImagePath(movieWatched.posterImage)" width="200" height="300"/></div>
+            <h1>{{movieWatched.title}}</h1>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{movieWatched.voteAverage}}</h2>
+            <h4><fa-icon [icon]="faEye" style="color: rgb(255, 200, 50);position: relative;"></fa-icon> {{movieWatched.voteCount | number}}</h4>
+        </div>
+    </div>
+    <div class="movies_box" *ngIf="favoriteDisplay">
+        <div class="element_box" *ngFor="let movieFavorite of moviesFavorite; let i = index" routerLink="../../../movie/{{movieFavorite.movieId}}">
+            <div class="poster_box_library"><img [src]="createImagePath(movieFavorite.posterImage)" width="200" height="300"/></div>
+            <h1>{{movieFavorite.title}}</h1>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{movieFavorite.voteAverage}}</h2>
+            <h4><fa-icon [icon]="faEye" style="color: rgb(255, 200, 50);position: relative;"></fa-icon> {{movieFavorite.voteCount | number}}</h4>
+        </div>
+    </div>
+    <div class="footer_box_loaded">
+        <div class="socialmedia_box">
+            <div class="icon_box"><fa-icon [icon]="faFacebook" style="color: rgb(66, 103, 178)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faYoutube" style="color: rgb(255, 0, 0)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faTwitter" style="color: rgb(29, 161, 242)"></fa-icon></div>
+        </div>
+        <div class="copyright_box">
+            <h1>@Copyright 2020-2021.</h1>
+            <h1 style="margin-bottom: 0px;">All rights reserved. Powered by the Angular.</h1>
+        </div>
+    </div>  
+</div>
+

@@ -68,11 +68,15 @@ export class UserService {
   }
 
   setAdminRole(id: string): Observable<any> {
-    return this.http.get(USER_API + `add/admin/${id}`, httpOptions)
+    return this.http.get(USER_API + `add/admin/${id}`, httpOptions);
   }
 
   deleteAdminRole(id: string): Observable<any> {
-    return this.http.get(USER_API + `delete/admin/${id}`, httpOptions)
+    return this.http.get(USER_API + `delete/admin/${id}`, httpOptions);
+  }
+
+  findUser(username: string): Observable<any> {
+    return this.http.get(USER_API + `find/${username}`, httpOptions);
   }
 
   addMovieToWatch(userId: string, movieId: string): Observable<any> {

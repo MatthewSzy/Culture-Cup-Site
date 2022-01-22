@@ -13,6 +13,9 @@ import { LibraryComponent } from './library.component';
 import { SelectionComponent } from './selection-component/selection.component';
 import { YourmoviesComponent } from './yourmovies/yourmovies.component';
 import { YourgamesComponent } from './yourgames/yourgames.component';
+import { UserSelectionComponent } from './user-selection-component/user-selection.component';
+import { UsermoviesComponent } from './usermovies/usermovies.component';
+import { UsergamesComponent } from './usergames/usergames.component';
 
 const modules = [
     MatFormFieldModule,
@@ -26,6 +29,9 @@ const modules = [
         SelectionComponent,
         YourmoviesComponent,
         YourgamesComponent,
+        UserSelectionComponent,
+        UsermoviesComponent,
+        UsergamesComponent,
         
     ],
     imports: [

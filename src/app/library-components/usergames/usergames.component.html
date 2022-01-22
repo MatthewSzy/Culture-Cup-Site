@@ -1,0 +1,43 @@
+<div class="yourgames_box">
+    <div class="user_library">BIBLIOTEKA UŻYTKOWNIKA: {{username}}</div>
+    <div class="button_box_library">
+        <button class="display_button" (click)="displayToPlay()" [disabled]="toPlayDisplay"><mat-icon class="mat-icon-library">bookmark</mat-icon> {{'your_games.to_play' | translate}}</button>
+        <button class="display_button" (click)="displayPlayed()" [disabled]="playedDisplay"><mat-icon class="mat-icon-library">check_circle</mat-icon> {{'your_games.played' | translate}}</button>
+        <button class="display_button" (click)="displayFavorite()"[disabled]="favoriteDisplay"><mat-icon class="mat-icon-library">favorite</mat-icon> {{'your_games.favorite' | translate}}</button>
+    </div>
+    <div class="games_box" *ngIf="toPlayDisplay">
+        <div class="element_box" *ngFor="let gameToPlay of gamesToPlay; let i = index" routerLink="../../../game/{{gameToPlay.gameId}}">
+            <div class="poster_box_library"><img [src]="createImagePath(gameToPlay.posterImageURL)" width="200" height="270"/></div>
+            <h1>{{gameToPlay.title}}</h1>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{gameToPlay.voteAverage | number:'1.1-1'}}</h2>
+            <h4><fa-icon [icon]="faEye" style="color: rgb(255, 200, 50);position: relative;"></fa-icon> {{gameToPlay.voteCount | number}}</h4>
+        </div>
+    </div>
+    <div class="games_box" *ngIf="playedDisplay">
+        <div class="element_box" *ngFor="let gamePlayed of gamesPlayed; let i = index" routerLink="../../../game/{{gamePlayed.gameId}}">
+            <div class="poster_box_library"><img [src]="createImagePath(gamePlayed.posterImageURL)" width="200" height="270"/></div>
+            <h1>{{gamePlayed.title}}</h1>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{gamePlayed.voteAverage | number:'1.1-1'}}</h2>
+            <h4><fa-icon [icon]="faEye" style="color: rgb(255, 200, 50);position: relative;"></fa-icon> {{gamePlayed.voteCount | number}}</h4>
+        </div>
+    </div>
+    <div class="games_box" *ngIf="favoriteDisplay">
+        <div class="element_box" *ngFor="let gameFavorite of gamesFavorite; let i = index" routerLink="../../../game/{{gameFavorite.gameId}}">
+            <div class="poster_box_library"><img [src]="createImagePath(gameFavorite.posterImageURL)" width="200" height="270"/></div>
+            <h1>{{gameFavorite.title}}</h1>
+            <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{gameFavorite.voteAverage | number:'1.1-1'}}</h2>
+            <h4><fa-icon [icon]="faEye" style="color: rgb(255, 200, 50);position: relative;"></fa-icon> {{gameFavorite.voteCount | number}}</h4>
+        </div>
+    </div>
+    <div class="footer_box_loaded">
+        <div class="socialmedia_box">
+            <div class="icon_box"><fa-icon [icon]="faFacebook" style="color: rgb(66, 103, 178)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faYoutube" style="color: rgb(255, 0, 0)"></fa-icon></div>
+            <div class="icon_box"><fa-icon [icon]="faTwitter" style="color: rgb(29, 161, 242)"></fa-icon></div>
+        </div>
+        <div class="copyright_box">
+            <h1>@Copyright 2020-2021.</h1>
+            <h1 style="margin-bottom: 0px;">All rights reserved. Powered by the Angular.</h1>
+        </div>
+    </div>  
+</div>
