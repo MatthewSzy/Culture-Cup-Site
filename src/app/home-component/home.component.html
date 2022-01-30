@@ -13,10 +13,11 @@
             <h3>{{'home.under' | translate}}</h3>
         </div>
     </div>
+    
     <div class="data_box_first" style="margin-top: 510px;">
         <div class="full_box">
-            <h1 style="color: white;">{{'home.top_movies' | translate}}</h1>
-            <div class="element_box" *ngFor="let fourBestRatingMovie of fourBestRatingMovies; let i = index" routerLink="movie/{{fourBestRatingMovie.movieId}}">
+            <h1 style="color: white;">{{'home.recommended_movies' | translate}}</h1>
+            <div class="element_box" *ngFor="let fourBestRatingMovie of fourPopularMovies; let i = index" routerLink="movie/{{fourBestRatingMovie.movieId}}">
                 <div class="poster_box"><img [src]="createImagePathMovie(fourBestRatingMovie.posterImage)" width="220" height="310"/></div>
                 <h1 style="color: black;">{{fourBestRatingMovie.title}}</h1>
                 <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{fourBestRatingMovie.voteAverage | number:'1.1'}}</h2>
@@ -26,8 +27,8 @@
     </div>
     <div class="data_box">
         <div class="full_box">
-            <h1>{{'home.recommended_movies' | translate}}</h1>
-            <div class="element_box" *ngFor="let fourPopularMovie of fourPopularMovies; let i = index" routerLink="movie/{{fourPopularMovie.movieId}}">
+            <h1>{{'home.top_movies' | translate}}</h1>
+            <div class="element_box" *ngFor="let fourPopularMovie of fourBestRatingMovies; let i = index" routerLink="movie/{{fourPopularMovie.movieId}}">
                 <div class="poster_box"><img [src]="createImagePathMovie(fourPopularMovie.posterImage)" width="220" height="310"/></div>
                 <h1>{{fourPopularMovie.title}}</h1>
                 <h2><fa-icon [icon]="faStar" style="color: rgb(255, 200, 50)"></fa-icon> {{fourPopularMovie.voteAverage | number:'1.1'}}</h2>

@@ -102,6 +102,14 @@ export class UserService {
     }, httpOptions);
   }
 
+  addMovieRating(userId: string, movieId: string, movieRating: number): Observable<any> {
+    return this.http.put(USER_API + 'add/movieRating', {
+      userId,
+      movieId,
+      movieRating
+    }, httpOptions);
+  }
+
   getMovieWatchInfo(userId: string, movieId: string): Observable<any> {
     return this.http.post(USER_API + 'get/movieInfo', {
       userId,
@@ -119,6 +127,13 @@ export class UserService {
 
   getMoviesFavorite(id: string): Observable<any> {
     return this.http.get(USER_API + `get/favoriteMovie/${id}`, httpOptions);
+  }
+
+  getMovieRating(userId: string, movieId: string): Observable<any> {
+    return this.http.post(USER_API + 'get/movieRating', {
+      userId,
+      movieId
+    }, httpOptions);
   }
 
   addGameToPlay(userId: string, gameId: string): Observable<any> {
@@ -144,6 +159,14 @@ export class UserService {
     }, httpOptions);
   }
 
+  addGameRating(userId: string, gameId: string, gameRating: number): Observable<any> {
+    return this.http.put(USER_API + 'add/gameRating', {
+      userId,
+      gameId,
+      gameRating
+    }, httpOptions);
+  }
+
   getGamePlayInfo(userId: string, gameId: string): Observable<any> {
     return this.http.post(USER_API + 'get/gameInfo', {
       userId,
@@ -161,5 +184,12 @@ export class UserService {
 
   getGamesFavorite(id: string): Observable<any> {
     return this.http.get(USER_API + `get/favoriteGame/${id}`, httpOptions);
+  }
+
+  getGameRating(userId: string, gameId: string): Observable<any> {
+    return this.http.post(USER_API + 'get/gameRating', {
+      userId,
+      gameId
+    }, httpOptions);
   }
 }

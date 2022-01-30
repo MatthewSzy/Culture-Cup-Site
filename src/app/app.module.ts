@@ -15,7 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import localeEn from '@angular/common/locales/en';
 import localePl from '@angular/common/locales/pl';
@@ -48,7 +48,7 @@ const modules = [
   MatInputModule,
   MatChipsModule,
   MatPaginatorModule,
-  ScrollingModule
+  ScrollingModule,
 ]
 
 @NgModule({

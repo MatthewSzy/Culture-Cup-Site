@@ -1,6 +1,7 @@
 import { Byte } from '@angular/compiler/src/util';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faFacebook, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
@@ -16,9 +17,17 @@ import { UserService } from '../_services/user.service';
   selector: 'app-movie',
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.css'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class MovieComponent implements OnInit {
+
+  @Input('rating') rating: number = 0;
+  @Input('starCount') starCount: number = 10;
+  @Input('color') color: string = 'accent';
+  @Output() ratingUpdated = new EventEmitter();
+
+  snackBarDuration: number = 2000;
+  ratingArr: number[] = [];
 
   LANGUAGE_BY_LOCALE: {[key: string]: string} = {
     af_NA: "Afrikaans (Namibia)",
@@ -500,7 +509,7 @@ export class MovieComponent implements OnInit {
     private commentService: CommentService,
     private movieService: MovieService,
     private userService: UserService,
-    public translateService: TranslateService
+    public translateService: TranslateService,
   ) { 
     this.translateService.set
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -544,6 +553,16 @@ export class MovieComponent implements OnInit {
           this.favorite = response[2];
         }
       );
+
+      this.userService.getMovieRating(this.userId, this.movieId).subscribe(
+        response => {
+          this.rating = response;
+        }
+      )
+
+      for (let index = 0; index < this.starCount; index++) {
+        this.ratingArr.push(index);
+      }
 
       this.commentService.getComments(this.movieId, "-1").subscribe(
         response => {
@@ -593,6 +612,26 @@ export class MovieComponent implements OnInit {
 
       }
     )
+  }
+
+  onClick(rating:number) {
+    this.rating = rating;
+
+    this.userService.addMovieRating(this.userId, this.movieId, this.rating).subscribe(
+      response => {
+        console.log(response);
+      }
+    )
+    this.ratingUpdated.emit(rating);
+    return false;
+  }
+
+  showIcon(index:number) {
+    if (this.rating >= index + 1) {
+      return 'star';
+    } else {
+      return 'star_border';
+    }
   }
 
   addComment() {
@@ -706,4 +745,10 @@ export class MovieComponent implements OnInit {
   getCommentFormInvalid() {
     return this.commentForm.controls['commentInfo'].invalid;
   }
+}
+
+export enum StarRatingColor {
+  primary = "primary",
+  accent = "accent",
+  warn = "warn"
 }

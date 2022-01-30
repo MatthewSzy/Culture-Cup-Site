@@ -1,5 +1,5 @@
 import { Byte } from '@angular/compiler/src/util';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,9 +14,18 @@ import { UserService } from '../_services/user.service';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css']
+  styleUrls: ['./game.component.css'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class GameComponent implements OnInit {
+
+  @Input('rating') rating: number = 0;
+  @Input('starCount') starCount: number = 10;
+  @Input('color') color: string = 'accent';
+  @Output() ratingUpdated = new EventEmitter();
+
+  snackBarDuration: number = 2000;
+  ratingArr: number[] = [];
 
   faStar = faStar;
   faEye = faEye;
@@ -91,6 +100,16 @@ export class GameComponent implements OnInit {
           this.favorite = response[2];
         }
       )
+
+      this.userService.getGameRating(this.userId, this.gameId).subscribe(
+        response => {
+          this.rating = response;
+        }
+      )
+
+      for (let index = 0; index < this.starCount; index++) {
+        this.ratingArr.push(index);
+      }
     }
   }
 
@@ -129,6 +148,26 @@ export class GameComponent implements OnInit {
       }
     )
   }
+
+  onClick(rating:number) {
+    this.rating = rating;
+
+    this.userService.addGameRating(this.userId, this.gameId, this.rating).subscribe(
+      response => {
+      }
+    )
+    this.ratingUpdated.emit(rating);
+    return false;
+  }
+
+  showIcon(index:number) {
+    if (this.rating >= index + 1) {
+      return 'star';
+    } else {
+      return 'star_border';
+    }
+  }
+
 
   addComment() {
     /*
